@@ -3,3 +3,22 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+@media only screen and (min-width: 992px) {
+  .vertical-align-center {
+    top: 50%;
+  }
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.vertical-align-center {
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.gsy-logo {
+  margin-right: 12px;
+}

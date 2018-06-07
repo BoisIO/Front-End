@@ -3,8 +3,12 @@ import React, { Component } from 'react'
 class Header extends Component {
   render() {
     return (
-      <nav className="" role="navigation">
-        <div className="nav-wrapper container"><a id="logo-container" href="#" className="brand-logo">Logo</a>
+      <nav role="navigation">
+        <div className="nav-wrapper container">
+          <a id="logo-container" href="#" className="brand-logo vertical-align-center">
+            <img src="/assets/img/favicon-32x32.png" className="vertical-middle gsy-logo" alt=""/>
+            <span class="vertical-middle hide-on-med-and-down">GoStreamYourself</span>
+          </a>
           <ul className="right hide-on-med-and-down">
             <li><a href="#">Navbar Link</a></li>
           </ul>
