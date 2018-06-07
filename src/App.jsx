@@ -4,8 +4,10 @@ import './App.css'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        
+      <div>
+        <Header text="Headertekst"/>
+
+        <Footer text="Footertekst"/>
       </div>
     )
   }
