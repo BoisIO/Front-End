@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './ui/components/Header'
 import Footer from './ui/components/Footer'
+import { Switch, Route } from 'rea'
 
 import axios from 'axios'
 import { throttleAdapterEnhancer, cacheAdapterEnhancer, Cache } from 'axios-extensions'
