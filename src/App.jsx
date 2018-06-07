@@ -4,6 +4,7 @@ import './App.css'
 
 import Header from './ui/components/Header'
 import Footer from './ui/components/Footer'
+import Test from './Test'
 import { Switch, Route } from 'react-router-dom'
 
 import axios from 'axios'
@@ -23,7 +24,7 @@ class App extends Component {
       <div>
         <Header text="Headertekst"/>
         <Switch>
-          <Route path="/" component={()=> <div axios={http}/>}/>
+          <Route path="/" component={()=> <Test axios={http}/>}/>
         </Switch>
         <Footer text="Footertekst"/>
       </div>
