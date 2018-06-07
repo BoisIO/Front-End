@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-extensions": "^3.0.2",
+    "bootstrap-material-design": "^4.1.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
