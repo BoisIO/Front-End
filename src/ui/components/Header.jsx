@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 
 class Header extends Component {
   render() {
     return (
       <nav>
         <div className="nav-wrapper container">
-          <a id="logo-container" href="#" className="brand-logo vertical-align-center">
+          <Link id="logo-container" to="/" className="brand-logo vertical-align-center">
             <img src="/assets/img/favicon-32x32.png" className="vertical-middle gsy-logo" alt=""/>
             <span className="vertical-middle hide-on-med-and-down">GoStreamYourself</span>
-          </a>
+          </Link>
           <ul className="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
+            <li><Link to="/streams">Navbar Link</Link></li>
           </ul>
 
           <ul id="nav-mobile" className="sidenav">
-            <li><a href="#">Navbar Link</a></li>
+            <li><Link to="/streams">Navbar Link</Link></li>
           </ul>
-          <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+          <Link to="/streams" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
         </div>
       </nav>
     )

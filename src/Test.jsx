@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 class Test extends Component {
   render() {
     return (
@@ -11,7 +11,7 @@ class Test extends Component {
                 <h2 className="center light-blue-text"><i className="material-icons">flash_on</i></h2>
                 <h5 className="center">Speeds up development</h5>
 
-                <p className="light"><a href="#">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</a> Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                <p className="light"><Link to="/">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components.</Link> Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
               </div>
             </div>
 
