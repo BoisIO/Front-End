@@ -7,8 +7,8 @@ export default function reducer(state = {
         {ID: 4, title: "Maarten van der Heijden", imagesource:"https://www.vakervrolijk.nl/wp-content/uploads/2017/11/Action_kaart5.jpg", imagealt:"Superpenguin"},
         {ID: 5, title: "Thijmen Boot", imagesource:"https://media.dumpert.nl/foto/20ec3a72_opatennis.jpg", imagealt:"Superpenguin"},
         {ID: 6, title: "Okke Trommelen", imagesource:"https://cdn.pixabay.com/photo/2018/05/29/00/13/nature-3437614_1280.jpg", imagealt:"Superpenguin"},
-        {ID: 6, title: "Rowin van Blokland", imagesource:"https://vignette.wikia.nocookie.net/danganronpa/images/e/e2/NagitoKomaedaDR2.png/revision/latest?cb=20170421142208", imagealt:"Superpenguin"},
-    ],
+        {ID: 7, title: "Rowin van Blokland", imagesource:"https://vignette.wikia.nocookie.net/danganronpa/images/e/e2/NagitoKomaedaDR2.png/revision/latest?cb=20170421142208", imagealt:"Superpenguin"},
+    ].concat(new Array(20).fill({ID: Math.floor(Math.random()*3000), title: "Wouter Jansen", imagesource:"https://media.licdn.com/dms/image/C5603AQH8nYBr-Jd_kA/profile-displayphoto-shrink_800_800/0?e=1533772800&v=beta&t=7LUAW38ujSGyuysKFInFL_cYLs5V_e1MVb1lcWj7wkE", imagealt:"Superpenguin"})),
     fetching: false,
     fetched: false,
     error: null
