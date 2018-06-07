@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import StreamThumbnail from '../streamthumbnails/StreamThumbnail';
 import {connect} from 'react-redux';
-import {Card, Row, Col} from 'react-materialize'
+import {Row, Col} from 'react-materialize'
 
 class StreamCardDeck extends Component {
     render() {

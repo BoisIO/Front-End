@@ -9,7 +9,7 @@ class StreamThumbnail extends Component {
                     <StreamThumbnailPicture src={this.props.imagesource} alt={this.props.imagealt}/>
                 </div>
                 <div className="card-content">
-                <p className="card-text">{this.props.title}</p>
+                    <p className="card-text">{this.props.title}</p>
                 </div>
             </div>
         )
