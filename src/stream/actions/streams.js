@@ -6,3 +6,10 @@ export function getStreams(){
         payload: axios.get("http://server.com")
     }
 }
+
+export function searchStreams(key) {
+    return {
+        type: "SEARCH_STREAMS",
+        payload: key
+    }
+}

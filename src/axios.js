@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { throttleAdapterEnhancer, cacheAdapterEnhancer, Cache } from 'axios-extensions'
 
-export default axios = axios.create({
+export default axios.create({
 	baseURL: '/',
   headers: { 
     'Cache-Control': 'no-cache'

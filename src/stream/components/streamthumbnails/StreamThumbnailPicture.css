@@ -1,5 +1,4 @@
 .picfit {
     object-fit: cover;
-    width: 20em;
-    height: 20em;
+    height: 250px;
 }
