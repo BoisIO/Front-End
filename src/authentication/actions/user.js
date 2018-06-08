@@ -6,3 +6,10 @@ export function addStreamToUser(stream, event){
         payload: {stream: stream, event: event}
     }
 }
+
+export function removeStreamFromUser(stream, event){
+    return {
+        type: "REMOVE_STREAM",
+        payload: {stream: stream, event: event}
+    }
+}

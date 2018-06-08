@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header text="Headertekst"/>
         <StreamPageContainer/>
+        <Header text="Headertekst"/>
         <Switch>
           <Route path="/streams" component={(props)=> <StreamPage { ...props}/>}/>
           <Route path="/streams/{subpage}" component={(props)=> <StreamPage { ...props}/>}/>

@@ -1,21 +1,28 @@
 import React, {Component} from 'react'
-import Draggable from 'react-draggable'
 import StreamContainer from './StreamContainer'
+import {connect} from 'react-redux';
+import {removeStreamFromUser} from '../../../authentication/actions/user'
+import Rnd from 'react-rnd'
+import './StreamDraggableContainer.css'
 
 class StreamDraggableContainer extends Component {
     render() {
         return (
-            <Draggable handle=".handle" defaultPosition={{x: 10, y: 10 }}>
-                <div className="card" style={{backgroundColor: "#263238", zIndex: 10}}>
-                    <div style={{color: "white", width: "100%", position: "relative"}}>
-                        <div className="handle" style={{position: "absolute", top: 0, left: 0, right: 0}}>::::::::::::</div>
-                        <div style={{width:"100%",position:"absolute", left:0, right: "auto", color: "red", top: 0}}>X</div>
+            <Rnd default={{x: this.props.event.x/2, y: this.props.event.y/2, width: 400, height: 400}} minWidth={300} minHeight={300} maxHeight={600} maxWidth={600} dragHandleClassName=".handle">
+                <div className="card" style={{zIndex: 10}}>
+                    <div className="streamcontainercontrols">
+                        <span className="handle streamcontainercontrolsdrag">::::::::::::</span>
+                        <span className="streamcontainercontrolsclose" onClick={(e) => this.props.dispatch(removeStreamFromUser(this.props.stream, e))}>X</span>
+                        <span className="streamcontainercontrolstitle" >{this.props.stream.title}</span>
                     </div>
                     <StreamContainer stream={this.props.stream}/>
                 </div>
-            </Draggable>
+            </Rnd>
         )
     }
 }
 
-export default StreamDraggableContainer;
+function mapStateToProps(store) {
+    return store;
+}
+export default connect(mapStateToProps)(StreamDraggableContainer);
