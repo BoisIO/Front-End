@@ -7,8 +7,9 @@ class StreamDraggableContainer extends Component {
         return (
             <Draggable handle=".handle" defaultPosition={{x: 10, y: 10 }}>
                 <div className="card" style={{backgroundColor: "#263238", zIndex: 10}}>
-                    <div style={{color: "white", width: "100%"}}>
-                        <div className="handle" style={{backgroundColor: "#263238"}}>::::::</div>
+                    <div style={{color: "white", width: "100%", position: "relative"}}>
+                        <div className="handle" style={{position: "absolute", top: 0, left: 0, right: 0}}>::::::::::::</div>
+                        <div style={{width:"100%",position:"absolute", left:0, right: "auto", color: "red", top: 0}}>X</div>
                     </div>
                     <StreamContainer stream={this.props.stream}/>
                 </div>
