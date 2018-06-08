@@ -19,7 +19,7 @@ class StreamCardDeck extends Component {
                         {this.props.streams.streams.filter(e => e.title.trim().toLowerCase().includes(this.props.streams.searchword.trim().toLowerCase())).map(item =>
                             <CSSTransition key={item.ID} timeout={500} classNames="fade">
                                 <Col s={12} m={6} l={3}> 
-                                    <StreamThumbnail title={item.title} imagesource={item.imagesource} imagealt={item.imagealt}/>
+                                    <StreamThumbnail stream={item}/>
                                 </Col>
                             </CSSTransition>
                         )}
