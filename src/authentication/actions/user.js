@@ -1,9 +1,9 @@
 //import axios from "../../axios";
 
-export function addStreamToUser(stream, event){
+export function addStreamToUser(stream, x=0, y=0){
     return {
         type: "ADD_STREAM",
-        payload: {stream: stream, event: event}
+        payload: {stream: stream, x: x, y: y}
     }
 }
 
