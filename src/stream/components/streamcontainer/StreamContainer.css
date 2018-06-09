@@ -1,38 +1,3 @@
 .streamcontainer, .streamcontainer video {
     width: 100%;
 }
-
-.streamcontainercontrols {
-    color: white;
-    position: relative;
-}
-
-.streamcontainercontrols > span {
-    position: absolute;
-    padding: 4px;
-    font-weight: bolder;
-}
-
-.streamcontainercontrolsclose {
-    right:0; 
-    left: auto;
-    z-index: 3;
-    cursor: pointer;
-}
-
-.streamcontainercontrolsclose:hover {
-    color: #ff5252;
-    font-weight: 900;
-}
-
-.streamcontainercontrolsdrag {
-    left: 0; 
-    right: 0; 
-    z-index: 2;
-}
-
-.streamcontainercontrolstitle {
-    left:0;
-    z-index:1;
-    font-size: 0.8em;
-}
