@@ -12,7 +12,7 @@ class StreamPage extends Component {
                     <StreamNavigation /* page={this.props.match.params.page} *//>
                 </Col>
                 <Col s={12} m={12} l={10}>
-                    <StreamCardDeck /* page={this.props.match.params.page} *//>
+                    <StreamCardDeck streams={this.props.streams.streams} searchword={this.props.streams.searchword}/* page={this.props.match.params.page} *//>
                 </Col>
             </Row>
         )
