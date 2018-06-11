@@ -10,11 +10,11 @@ class StreamContainer extends Component {
                 <div className="card-image">
                     <StreamVideo stream={this.props.stream}/>
                 </div>
-                <div className="center">
-                    ::: Chat :::
-                </div>
                 <div className="chatboxcontainer">
                     <ChatBoxContainer stream={this.props.stream}/>
+                </div>
+                <div class="chat-send input-field">
+                    <input type="text" id="message" class="materialize-textarea" data-length="120" placeholder="Say something..."></input>
                 </div>
             </div>
         )

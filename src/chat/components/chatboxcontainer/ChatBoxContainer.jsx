@@ -5,7 +5,7 @@ class ChatBoxContainer extends Component {
     render() {
         return (
             <ul className="collection">
-                {this.props.stream.messages.map((item, key) => <ChatMessage key={key} />)}
+                {this.props.stream.messages.map((item, key) => <ChatMessage key={key} message={item} />)}
             </ul>
         )
     }
