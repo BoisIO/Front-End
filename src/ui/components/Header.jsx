@@ -16,11 +16,11 @@ class Header extends Component {
               <span className="vertical-middle hide-on-med-and-down">GoStreamYourself</span>
             </Link>
             <ul className="right hide-on-med-and-down">
-              <li><Link to="/streams">Navbar Link</Link></li>
+              <li><Link to="/people">All transparent people</Link></li>
             </ul>
 
             <ul id="nav-mobile" className="sidenav">
-              <li><Link to="/streams">Navbar Link</Link></li>
+              <li><Link to="people">All transparent people</Link></li>
             </ul>
             <Link to="/streams" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
           

@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import StreamPage from './ui/components/pages/StreamPage';
 import StreamPageContainer from './stream/components/streamcontainer/StreamPageContainer'
 import Login from './authentication/components/Login'
+import TransparentPersonPage from './ui/components/pages/TransparentPersonPage';
 
 class App extends Component {
   render() {
@@ -18,10 +19,11 @@ class App extends Component {
         <StreamPageContainer/>
         <Header/>
         <Switch>
-          <Route path="/" component={(props)=> this.props.user.authenticated?<StreamPage { ...props}/>:<Login/>}/>
+          <Route exact path="/people" component={()=> this.props.user.authenticated?<TransparentPersonPage />:<Login/>}/>
           <Route path="/search/{keyword}" component={(props)=> this.props.user.authenticated?<StreamPage { ...props}/>:<Login/>}/>
           <Route path="/{subpage}" component={(props)=> this.props.user.authenticated?<StreamPage { ...props}/>:<Login/>}/>
-          <Route path="/test" component={(props)=> this.props.user.authenticated?<Test {...props}/>:<Login/>}/>
+          <Route exact path="/test" component={(props)=> this.props.user.authenticated?<Test {...props}/>:<Login/>}/>
+          <Route exact path="/" component={(props)=> this.props.user.authenticated?<StreamPage {...props} />:<Login/>}/>
         </Switch>
         <Footer/>
       </div>
