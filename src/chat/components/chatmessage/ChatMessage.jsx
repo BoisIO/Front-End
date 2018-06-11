@@ -5,10 +5,13 @@ class ChatMessage extends Component {
     render() {
         return (
             <li className="collection-item">
-                <Chip>
-                    <img src='img/yuna.jpg' alt='Contact Person' />
-                    Jane Doe
-                </Chip>
+                <span>
+                    <Chip>
+                        <img src={this.props.message.userimage} alt={"Avatar of " + this.props.message.user} />
+                        {this.props.message.user + (this.props.message.is_verified ? " ✔" : "")}
+                    </Chip>
+                    {this.props.message.message}
+                </span>
             </li>
         )
     }

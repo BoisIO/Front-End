@@ -10,9 +10,6 @@ class StreamContainer extends Component {
                 <div className="card-image">
                     <StreamVideo stream={this.props.stream}/>
                 </div>
-                <div className="center">
-                    ::: Chat :::
-                </div>
                 <div className="chatboxcontainer">
                     <ChatBoxContainer stream={this.props.stream}/>
                 </div>

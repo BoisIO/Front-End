@@ -1,3 +1,12 @@
 .streamcontainer, .streamcontainer video {
     width: 100%;
 }
+
+.chatboxcontainer {
+    max-height: 24em;
+    overflow-y: scroll;
+}
+
+.chatboxcontainer .container {
+    margin: 0
+}

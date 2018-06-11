@@ -6,7 +6,7 @@ class ChatBoxContainer extends Component {
         console.table(this.props)
         return (
             <ul className="collection">
-                {this.props.stream.messages.map((item, key) => <ChatMessage key={key} />)}
+                {this.props.stream.messages.map((item, key) => <ChatMessage key={key} message={item} />)}
             </ul>
         )
     }
