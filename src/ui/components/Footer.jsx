@@ -14,11 +14,6 @@ class Footer extends Component {
             </div>
           </div>
         </div>
-        <div className="footer-copyright">
-          <div className="container">
-            © Heijden Solutions - 2018
-          </div>
-        </div>
       </footer>
     )
   }
