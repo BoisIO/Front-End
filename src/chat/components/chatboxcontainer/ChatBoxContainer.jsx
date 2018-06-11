@@ -1,11 +1,12 @@
 import React, {Component} from 'react'
+import ChatMessage from '../../../chat/components/chatmessage/ChatMessage'
 
 class ChatBoxContainer extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <ul class="collection">
+                {this.props.stream.messages.map(item => <ChatMessage />)}
+            </ul>
         )
     }
 }
