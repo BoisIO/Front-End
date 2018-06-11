@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
-import { Chip } from 'materialize-css'
+import { Chip } from 'react-materialize'
 
 class ChatMessage extends Component {
     render() {
         return (
             <li class="collection-item">
                 <Chip>
-                <img src='img/yuna.jpg' alt='Contact Person' />
-                Jane Doe
+                    <img src='img/yuna.jpg' alt='Contact Person' />
+                    Jane Doe
                 </Chip>
             </li>
         )
