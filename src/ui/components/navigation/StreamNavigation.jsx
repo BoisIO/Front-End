@@ -11,10 +11,10 @@ class StreamNavigation extends Component {
                     <img src="/assets/img/menu_burger.svg" alt="Burger icon"/>
                 </div> */}
                 <ul className="collection">
-                    <Link to="/streams/popular" className="collection-item">
+                    <Link to="/popular" className="collection-item">
                         <p className="SidemenuItem">Popular</p>
                     </Link>
-                    <Link to="/streams/trending" className="collection-item">
+                    <Link to="/trending" className="collection-item">
                         <p className="SidemenuItem">Trending</p>
                     </Link>
                 </ul>

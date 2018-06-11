@@ -2,11 +2,15 @@ export default function reducer(state = {
     openstreams: [],
     fetching: false,
     fetched: false,
-    error: null
+    error: null,
+    authenticated: true
 }, action){
     switch(action.type){
+        case "USER_LOGIN": {
+            return state
+        }
         case "ADD_STREAM": {
-            if(state.openstreams.map(e => e.stream.ID).filter(e => e === action.payload.stream.ID).length >= 1) return state
+            if(state.openstreams.map(streamobject => streamobject.stream.ID).filter(streamobject => streamobject === action.payload.stream.ID).length >= 1) return state
             if(state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat(action.payload)}
             else return state;
 
