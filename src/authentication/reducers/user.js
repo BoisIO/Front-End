@@ -3,7 +3,8 @@ export default function reducer(state = {
     fetching: false,
     fetched: false,
     error: null,
-    authenticated: true
+    authenticated: true,
+    user: {user: "Otterly Adowable", userimage: "/assets/img/otter2.jpg", message: "Hi", is_verified: true}
 }, action){
     switch(action.type){
         case "USER_LOGIN": {

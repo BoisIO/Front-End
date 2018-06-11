@@ -9,7 +9,7 @@ import ChatInput from '../../../chat/components/chatinput/ChatInput'
 class StreamDraggableContainer extends Component {
     render() {
         return (
-            <Rnd bounds="body" default={{x: this.props.x/2, y: this.props.y/2, height: 600, width: 300}} minWidth={200} minHeight={50} maxHeight={900} maxWidth={900} lockAspectRatio={false} dragHandleClassName=".handle">
+            <Rnd bounds="body" default={{x: this.props.x/2, y: this.props.y/2, height: 500, width: 400}} minWidth={200} minHeight={50} maxHeight={900} maxWidth={900} lockAspectRatio={false} dragHandleClassName=".handle">
                 <div className="card draggablecontainer" style={{margin: 0}}>
                     <div className="streamcontainercontrols">
                         <span className="handle streamcontainercontrolsdrag">:::::::</span>
