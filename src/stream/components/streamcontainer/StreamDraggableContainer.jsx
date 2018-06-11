@@ -8,7 +8,7 @@ import './StreamDraggableContainer.css'
 class StreamDraggableContainer extends Component {
     render() {
         return (
-            <Rnd default={{x: this.props.x/2, y: this.props.y/2, width: 400, height: 400}} minWidth={300} minHeight={300} maxHeight={600} maxWidth={600} dragHandleClassName=".handle">
+            <Rnd default={{x: this.props.x/2, y: this.props.y/2, width: 400, height: 200}} minWidth={200} minHeight={150} maxHeight={700} maxWidth={600} lockAspectRatio={false} dragHandleClassName=".handle">
                 <div className="card" style={{zIndex: 10}}>
                     <div className="streamcontainercontrols">
                         <span className="handle streamcontainercontrolsdrag">:::::::</span>
