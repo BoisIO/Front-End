@@ -22,3 +22,7 @@ body {
 .gsy-logo {
   margin-right: 12px;
 }
+
+.text-muted {
+  color: #CCC
+}
