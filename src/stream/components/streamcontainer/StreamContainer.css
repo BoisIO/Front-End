@@ -10,3 +10,7 @@
 .chatboxcontainer .container {
     margin: 0
 }
+
+.chat-send {
+    margin: 1em;
+}

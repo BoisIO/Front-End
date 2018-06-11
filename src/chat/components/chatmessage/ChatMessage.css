@@ -1,0 +1,9 @@
+.clear {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.chat-timestamp {
+    line-height: 32px;
+}
