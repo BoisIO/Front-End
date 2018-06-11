@@ -3,7 +3,7 @@ export default function reducer(state = {
     fetching: false,
     fetched: false,
     error: null,
-    authenticated: false
+    authenticated: true
 }, action){
     switch(action.type){
         case "USER_LOGIN": {
