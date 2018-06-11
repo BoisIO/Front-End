@@ -5,7 +5,6 @@ import {Col, Row} from 'react-materialize'
 class Header extends Component {
   render() {
     return (
-<<<<<<< Updated upstream
       <nav>
         <div className="nav-wrapper">
           <Row>
@@ -24,18 +23,6 @@ class Header extends Component {
               <Link to="/streams" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
             </Col>
           </Row>
-=======
-      <nav className="">
-        <div className="nav-wrapper container"><a id="logo-container" href="#" className="brand-logo">Logo</a>
-          <ul className="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-          </ul>
-
-          <ul id="nav-mobile" className="sidenav">
-            <li><a href="#">Navbar Link</a></li>
-          </ul>
-          <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
->>>>>>> Stashed changes
         </div>
       </nav>
       )

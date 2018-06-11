@@ -8,11 +8,8 @@ class StreamContainer extends Component {
         return (
             <div className="streamcontainer">
                 <StreamVideo stream={this.props.stream}/>
-                <div className="chatboxcontainer" style={{height:"80%"}}>
+                <div className="chatboxcontainer">
                     <ChatBoxContainer stream={this.props.stream}/>
-                </div>
-                <div class="chat-send input-field" style={{height: "20%"}}>
-                    <input type="text" id="message" class="materialize-textarea" data-length="120" placeholder="Say something..."></input>
                 </div>
             </div>
         )

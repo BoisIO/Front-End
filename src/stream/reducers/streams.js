@@ -23,6 +23,8 @@ export default function reducer(state = {
     searchword: ""
 }, action){
     switch(action.type){
+
+        // Retrieving streams
         case "FETCH_STREAMS_PENDING": {
             return {...state, fetching: true}
         }
@@ -32,9 +34,51 @@ export default function reducer(state = {
         case "FETCH_STREAMS_FULFILLED": {
             return {...state, fetching: false, fetched: true, streams: action.payload.data}
         }
+
+        // Retrieving chatmessages
+        case "FETCH_STREAMCHAT_PENDING": {
+            return {...state, fetching: true}
+        }
+        case "FETCH_STREAMCHAT_REJECTED": {
+            return {...state, fetching: false, error: action.payload}
+        }
+        case "FETCH_STREAMCHAT_FULFILLED": {
+            return {...state, fetching: false, fetched: true, streams: state.streams.map((stream, key) => {
+                let streamitem = stream;
+                if (stream.ID === action.meta.streamID) {
+                    streamitem.messages = action.payload.data
+                }
+                return streamitem
+            })}
+        }
+
+        // Sending chatmesssages
+        case "SEND_STREAMCHAT_PENDING": {
+            return {...state, fetching: true}
+        }
+        case "SEND_STREAMCHAT_REJECTED": {
+            return {...state, fetching: false, error: action.payload}
+        }
+        case "SEND_STREAMCHAT_FULFILLED": {
+            console.log(action)
+            return {...state, fetching: false, fetched: true, streams: state.streams.map((stream, key) => {
+                let streamitem = stream;
+                if (stream.ID === action.meta.stream.ID) {
+                    streamitem.messages.push({
+                        message: action.meta.message,
+                        user: action.meta.user
+                    })
+                }
+                return streamitem
+            })}
+        }
+
+        // Searching streams
         case "SEARCH_STREAMS": {
             return {...state, searchword: action.payload}
         }
+
+        // Default
         default: {
             return state;
         }

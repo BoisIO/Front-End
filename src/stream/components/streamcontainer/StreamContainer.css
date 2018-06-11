@@ -4,20 +4,21 @@
 }
 
 .chatboxcontainer {
-    max-height: 12em;
+    height: 100%;
     overflow-y: scroll;
     font-size: 0.95em;
 }
 
-.chatboxcontainer .container {
-    margin: 0
+.streamcontainer {
+    height: inherit;
 }
 
 .chat-send {
-    margin: 0.6em;
+    margin: 0.25em 1em;
 }
 
 .materialize-textarea {
     font-size: 0.9em !important;
     padding: 0.1em;
 }
+
