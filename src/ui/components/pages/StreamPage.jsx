@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import StreamCardDeck from '../../../stream/components/streamcollections/StreamCardDeck'
 import {Row, Col} from 'react-materialize'
 import StreamNavigation from '../navigation/StreamNavigation';
-import {connect} from 'react-redux';
+import SearchBar from '../../../ui/components/searchbar/SearchBar'
 
 class StreamPage extends Component {
     render() {
@@ -12,14 +12,11 @@ class StreamPage extends Component {
                     <StreamNavigation /* page={this.props.match.params.page} *//>
                 </Col>
                 <Col s={12} m={12} l={10}>
-                    <StreamCardDeck streams={this.props.streams.streams} searchword={this.props.streams.searchword}/* page={this.props.match.params.page} *//>
+                    <SearchBar/>
+                    <StreamCardDeck /* page={this.props.match.params.page} *//>
                 </Col>
             </Row>
         )
     }
 }
-
-function mapStateToProps(store) {
-    return store;
-}
-export default connect(mapStateToProps)(StreamPage);
+export default StreamPage;

@@ -18,7 +18,7 @@ class TransparentPersonDetailPage extends Component {
                         <p className="text-slogan">{person.slogan}</p>
                     </Col>
                 </Row>
-                <StreamCardDeck searchword={this.props.streams.searchword} streams={this.props.streams.streams.filter(stream => stream.title === person.user)} /* page={this.props.match.params.page} *//>
+                <StreamCardDeck userspecific={person.user} /* page={this.props.match.params.page} *//>
             </Container>
         )
     }
