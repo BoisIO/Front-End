@@ -3,7 +3,7 @@
 }
 
 .chatboxcontainer {
-    max-height: 24em;
+    max-height: 12em;
     overflow-y: scroll;
 }
 
