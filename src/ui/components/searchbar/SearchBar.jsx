@@ -6,7 +6,7 @@ import {searchStreams} from '../../../stream/actions/streams'
 class SearchBar extends Component {
     render() {
         return (
-            <Input s={6} m={6} l={6} placeholder="Search an item" onKeyUp={(e) => this.props.dispatch(searchStreams(e.target.value)) } />
+            <Input s={12} m={12} l={12} placeholder="Search an item" onKeyUp={(e) => this.props.dispatch(searchStreams(e.target.value)) } />
         )
     }
 }
