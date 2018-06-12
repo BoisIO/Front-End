@@ -3,7 +3,7 @@ import axios from "../../axios";
 export function getStreams(){
     return {
         type: "FETCH_STREAMS",
-        payload: axios.get("http://server.com")
+        payload: axios.get("http://back3ndb0is.herokuapp.com/streams")
     }
 }
 
