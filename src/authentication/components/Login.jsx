@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from "../../axios";
 import crypto from 'crypto'
 import {Row, Col, Input} from 'react-materialize'
 
