@@ -4,8 +4,13 @@ import StreamVideo from '../streamvideo/StreamVideo'
 import './StreamContainer.css'
 import ChatInput from '../../../chat/components/chatinput/ChatInput'
 import {Row} from 'react-materialize'
+import { getChat } from '../../../chat/actions/chat'
+import {connect} from 'react-redux'
 
 class StreamContainer extends Component {
+    componentWillMount() {
+        this.props.dispatch(getChat(this.props.stream._id))
+    }
     render() {
         return (
             <div className="streamcontainer">
@@ -19,4 +24,7 @@ class StreamContainer extends Component {
     }
 }
 
-export default StreamContainer;
+function mapStateToProps(store) {
+    return store;
+}
+export default connect(mapStateToProps)(StreamContainer);

@@ -8,7 +8,7 @@ export default axios.create({
   },
   adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter, {enabledByDefault:true, defaultCache: new Cache({maxAge: 1000*60*60})})), //require, basic adapter
   transformRequest: [function (data, headers) {
-    axios.defaults.headers.token = headers['token']
+    if(headers['Token'] !== undefined) axios.defaults.headers.Token = headers['Token']
     return data
   }],
 })

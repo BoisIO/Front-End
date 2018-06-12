@@ -10,12 +10,12 @@ class StreamThumbnail extends Component {
         return (
             <div className="card openstream" onClick={(e) => this.props.dispatch(addStreamToUser(this.props.stream, e.target.x, e.target.y))}>
                 <div className="card-image">
-                    <StreamThumbnailPicture src={this.props.stream.imagesource} alt={"Avatar of "+this.props.stream.title}/>
+                    <StreamThumbnailPicture src={this.props.stream.Avatar} alt={"Avatar of "+this.props.stream.User}/>
                 </div>
                 <div className="card-content">
-                    <p className="text-title">{this.props.stream.title}</p>
-                    <p className="text-slogan">{this.props.stream.slogan}</p>
-                    <p className="text-muted">{this.props.stream.viewers} viewers</p>
+                    <p className="text-title">{this.props.stream.User}</p>
+                    <p className="text-slogan">{this.props.stream.Slogan}</p>
+                    <p className="text-muted">{this.props.stream.Viewers} viewers</p>
                 </div>
             </div>
         )

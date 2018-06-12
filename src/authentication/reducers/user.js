@@ -18,7 +18,8 @@ export default function reducer(state = {
         }
         case "USER_LOGIN_FULFILLED": {
             /* Dit is tijdelijk */
-            axios.defaults.headers['token'] = action.payload.headers.token
+            console.log(action.payload)
+            axios.defaults.headers['Token'] = action.payload.headers.Token
             return {...state, fetching: false, fetched: true, authenticated: true}
         }
 

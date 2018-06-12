@@ -7,7 +7,7 @@ class StreamPageContainer extends Component {
         return (
             <div style={{position:"fixed", zIndex: 10}}>
                 {this.props.user.openstreams.map(item => 
-                    <StreamDraggableContainer x={item.x} y={item.y} stream={item.stream} event={item.event} key={item.stream.ID}/>
+                    <StreamDraggableContainer x={item.x} y={item.y} stream={item.stream} event={item.event} key={item.stream._id}/>
                 )}
             </div>
         )

@@ -1,9 +1,12 @@
 import axios from "../../axios";
 
-export function getChat(){
+export function getChat(stream){
     return {
         type: "FETCH_STREAMCHAT",
-        payload: axios.get("http://server.com")
+        payload: axios.get("http://back3ndb0is.herokuapp.com/chat/"+stream),
+        meta: {
+            streamID: stream
+        }
     }
 }
 

@@ -13,7 +13,7 @@ class StreamDraggableContainer extends Component {
                     <div className="streamcontainercontrols">
                         <span className="handle streamcontainercontrolsdrag">:::::::</span>
                         <span className="streamcontainercontrolsclose" onClick={(e) => this.props.dispatch(removeStreamFromUser(this.props.stream, e))}>X</span>
-                        <span className="streamcontainercontrolstitle" >{this.props.stream.title}</span>
+                        <span className="streamcontainercontrolstitle" >{this.props.stream.User}</span>
                     </div>
                     <StreamContainer stream={this.props.stream}/>
                 </div>

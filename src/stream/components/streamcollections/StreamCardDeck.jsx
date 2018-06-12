@@ -15,8 +15,14 @@ class StreamCardDeck extends Component {
         return (
             <Row>
                 <TransitionGroup>
-                    {this.props.streams.filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.title).filter(e => e.title.trim().toLowerCase().includes(this.props.streams.searchword.trim().toLowerCase())).map(item =>
-                        <CSSTransition key={item.ID} timeout={500} classNames="fade">
+                    {this.props.streams
+                        .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User)
+                        .filter(stream => 
+                            stream.User.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || 
+                            stream.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
+                        )
+                        .map(item =>
+                        <CSSTransition key={item._id} timeout={500} classNames="fade">
                             <Col s={12} m={6} l={3}> 
                                 <StreamThumbnail stream={item}/>
                             </Col>
