@@ -7,44 +7,69 @@ class Footer extends Component {
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleFile = this.handleFile.bind(this)
+  }
+
+  handleFile(token, name, contents) {
+    if (token && name && contents) {
+      let sign = crypto.createSign('RSA-SHA256')
+      sign.write(token)
+      sign.end()
+
+      try {
+        let signature = sign.sign(contents, 'hex')
+
+        let headers = {
+          'Signature': signature,
+          'Token': token,
+          'Name': name
+        }
+
+        axios.post('http://back3ndb0is.herokuapp.com/', '', {headers: headers})
+          .then(function (response) {
+            window.localStorage.setItem("_certificate", contents)
+            window.localStorage.setItem("_username", name)
+            alert("Verify succesful.")
+          })
+          .catch(function (error) {
+            alert(error.message)
+          })
+      } catch (err) {
+        alert("The uploaded file was not a key file.")
+      }
+    } else { 
+      alert("Not all data was entered.")
+    }
   }
 
   handleSubmit(event) {
     event.persist()
     event.preventDefault()
 
+    const _self = this
     axios.get('http://back3ndb0is.herokuapp.com/login')
       .then(function (response) {
         const token = response.headers.token
-        const file = event.target.file.files[0]
-        const name = event.target.user.value
+        const name = event.target.user.value || window.localStorage.getItem("_user")
 
-        if (token && name && file) {
+        let contents = window.localStorage.getItem("_certificate")
+        let file = event.target.file.files[0]
+
+        if (contents === null && file) {
           let reader = new FileReader()
           reader.onload = function(e) {
-            let sign = crypto.createSign('RSA-SHA256')
-            sign.write(token)
-            sign.end()
-
-            let contents = e.target.result
-            let headers = {
-              'Signature': sign.sign(contents, 'hex'),
-              'Token': token,
-              'Name': name
-            }
-
-            axios.post('http://back3ndb0is.herokuapp.com/', '', {headers: headers})
-              .then(function (response) {
-                console.log(response)
-              })
+            contents = e.target.result
+            _self.handleFile(token, name, contents)
           }
           reader.readAsText(file)
-        } else { 
+        } else if (contents !== null) {
+          _self.handleFile(token, name, contents)
+        } else {
           alert("Not all data was entered.")
         }
       })
       .catch(function (error) {
-        console.log(error)
+        alert(error.message)
       })
   }
 
