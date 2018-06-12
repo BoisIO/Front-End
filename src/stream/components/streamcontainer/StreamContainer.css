@@ -8,7 +8,7 @@
     height: 100%;
 }
 .chatboxcontainer {
-    height: 42.5%;
+    height: 36%;
     overflow-y: scroll;
     font-size: 0.95em;
 }
