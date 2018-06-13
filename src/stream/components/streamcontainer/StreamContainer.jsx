@@ -3,7 +3,6 @@ import ChatBoxContainer from '../../../chat/components/chatboxcontainer/ChatBoxC
 import StreamVideo from '../streamvideo/StreamVideo'
 import './StreamContainer.css'
 import ChatInput from '../../../chat/components/chatinput/ChatInput'
-import {Row} from 'react-materialize'
 import { getChat } from '../../../chat/actions/chat'
 import {connect} from 'react-redux'
 

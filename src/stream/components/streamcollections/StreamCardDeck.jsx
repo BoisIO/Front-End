@@ -17,10 +17,9 @@ class StreamCardDeck extends Component {
                 <TransitionGroup>
                     {this.props.streams
                         .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User)
-                        .filter(stream => 
-                            stream.User.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || 
-                            stream.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
-                        )
+                        .filter(stream => {
+                            return stream.User.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
+                        })
                         .map(item =>
                         <CSSTransition key={item._id} timeout={500} classNames="fade">
                             <Col s={12} m={6} l={3}> 
@@ -35,6 +34,6 @@ class StreamCardDeck extends Component {
 }
 
 function mapStateToProps(store) {
-    return store.streams;
+    return {streams: store.streams.streams, searchword: store.streams.searchword};
 }
 export default connect(mapStateToProps)(StreamCardDeck);
