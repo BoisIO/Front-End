@@ -16,6 +16,27 @@ export default function reducer(state = {
             return {...state, fetching: false, fetched: true, authenticated: true}
         }
 
+        case "USER_AUTHENTICATE_PENDING": {
+            return state
+        }
+
+        case "USER_AUTHENTICATE_REJECTED": {
+            window.localStorage.removeItem("_certificate")
+            window.localStorage.removeItem("_username")
+            window.localStorage.removeItem("_token")
+            alert("An error has occured during verification.\n" + action.payload)
+            return state
+        }
+
+        case "USER_AUTHENTICATE_FULFILLED": { 
+            if(action.meta !== undefined) {
+                window.localStorage.setItem("_certificate", action.meta.contents)
+                window.localStorage.setItem("_username", action.meta.name)
+            }
+            window.localStorage.setItem("_token", action.payload.headers.token)
+            return {...state, authenticated: true}
+        }
+
         case "ADD_STREAM": {
             if(state.openstreams.map(streamobject => streamobject.stream._id).filter(streamobject => streamobject === action.payload.stream._id).length >= 1) return state
             if(state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat(action.payload)}

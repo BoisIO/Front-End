@@ -3,7 +3,7 @@ import axios from '../../axios'
 import crypto from 'crypto'
 import {Row, Col, Input} from 'react-materialize'
 import { connect } from 'react-redux'
-import {login} from '../actions/user'
+import {authenticate} from '../actions/user'
 
 class Login extends Component {
   constructor() {
@@ -27,25 +27,8 @@ class Login extends Component {
           'Name': name
         }
         axios.defaults.headers = headers
-        const _self = this
-        axios.get('http://certifcation.herokuapp.com/login', {headers: headers, forceUpdate: true})
-          .then(function (response) {
-            if (response.data.errorCode) {
-              window.localStorage.removeItem("_certificate")
-              window.localStorage.removeItem("_username")
-              alert("An error has occured during verification.\n" + response.data.errorCode + ": " + response.data.message)
-            } else {
-              window.localStorage.setItem("_certificate", contents)
-              window.localStorage.setItem("_username", name)
-              window.localStorage.setItem("_token", token)
-              _self.props.dispatch(login(name, token))
-            }
-          })
-          .catch(function (error) {
-            window.localStorage.removeItem("_certificate")
-            window.localStorage.removeItem("_username")
-            alert("An error has occured during verification.\n" + error.message)
-          })
+
+        this.props.dispatch(authenticate(headers, {name: name, token: token, contents: contents}))
       } catch (err) {
         alert("The uploaded file was not a key file.")
       }
@@ -57,34 +40,34 @@ class Login extends Component {
   handleSubmit(event) {
     event.persist()
     event.preventDefault()
+  
+    this.props.dispatch(authenticate(null))
+    // axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
+    //   .then(function (response) {
+    //     let token = response.headers.token
+    //     let name = event.target.user.value || window.localStorage.getItem("_user")
 
-    let _self = this
-    axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
-      .then(function (response) {
-        let token = response.headers.token
-        let name = event.target.user.value || window.localStorage.getItem("_user")
+    //     let contents = window.localStorage.getItem("_certificate")
+    //     let file = event.target.file.files[0]
 
-        let contents = window.localStorage.getItem("_certificate")
-        let file = event.target.file.files[0]
-
-        if (contents === null && file) {
-          let reader = new FileReader()
-          reader.onload = function(e) {
-            contents = e.target.result
-            _self.handleFile(token, name, contents)
-          }
-          reader.readAsText(file)
-        } else if (contents !== null) {
-          console.log("We were already logged in. Trying to verify the saved certficate.")
-          _self.props.dispatch(login(name, token))
-          _self.handleFile(token, name, contents)
-        } else {
-          alert("Not all data was entered.")
-        }
-      })
-      .catch(function (error) {
-        alert("An error has occured during token retrieval.\n" + error.message)
-      })
+    //     if (contents === null && file) {
+    //       let reader = new FileReader()
+    //       reader.onload = function(e) {
+    //         contents = e.target.result
+    //         _self.handleFile(token, name, contents)
+    //       }
+    //       reader.readAsText(file)
+    //     } else if (contents !== null) {
+    //       console.log("We were already logged in. Trying to verify the saved certficate.")
+    //       _self.props.dispatch(login(name, token))
+    //       _self.handleFile(token, name, contents)
+    //     } else {
+    //       alert("Not all data was entered.")
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     alert("An error has occured during token retrieval.\n" + error.message)
+    //   })
   }
 
   render() {

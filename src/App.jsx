@@ -14,9 +14,6 @@ import TransparentPersonPage from './ui/components/pages/TransparentPersonPage'
 import TransparentPersonDetailPage from './ui/components/pages/TransparentPersonDetailPage'
 
 class App extends Component {
-  componentWillMount() {
-    
-  }
   render() {
     return (
       <div>

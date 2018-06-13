@@ -1,3 +1,5 @@
+import axios from '../../axios'
+
 export function addStreamToUser(stream, x=0, y=0){
     return {
         type: "ADD_STREAM",
@@ -19,5 +21,13 @@ export function login(userdata, token) {
             username: userdata,
             token: token
         }
+    }
+}
+
+export function authenticate(headers, meta) {
+    return {
+        type: "USER_AUTHENTICATE",
+        payload: axios.get('http://certifcation.herokuapp.com/login', {headers: headers, forceUpdate: true}),
+        meta: meta
     }
 }

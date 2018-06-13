@@ -18,13 +18,17 @@ export default axios.create({
     'Cache-Control': 'no-cache',
   },
   adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter, {enabledByDefault:true, defaultCache: new Cache({maxAge: 1000*60*60})})), //require, basic adapter
-  transformRequest: [function (data, headers) {
-    localStorage.setItem("_token", headers.Token)
-    if(localStorage.getItem("_token") !== null && localStorage.getItem("_certificate") !== null) {
+  transformResponse: [function (data, headers) {
+    if(headers.Token !== undefined) localStorage.setItem("_token", headers.Token)
+    if(headers.token !== undefined) localStorage.setItem("_token", headers.token)
+    return data
+  }],
+  transformRequest: [function(data, headers) {
+    if(localStorage.getItem("_token") !== null) {
       axios.defaults.headers.Token = localStorage.getItem("_token")
       axios.defaults.headers.Signature = signToken(localStorage.getItem("_token"), localStorage.getItem("_certificate"))
       axios.defaults.headers.Name = localStorage.getItem("_username") 
     }
     return data
-  }],
+  }]
 })
