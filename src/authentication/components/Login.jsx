@@ -25,11 +25,11 @@ class Footer extends Component {
           'Name': name
         }
 
-        console.log("Token sent:", token)
-
         axios.get('http://certifcation.herokuapp.com/login', {headers: headers})
           .then(function (response) {
             if (response.data.errorCode) {
+              window.localStorage.removeItem("_certificate")
+              window.localStorage.removeItem("_username")
               alert("An error has occured during verification.\n" + response.data.errorCode + ": " + response.data.message)
             } else {
               window.localStorage.setItem("_certificate", contents)
@@ -38,6 +38,8 @@ class Footer extends Component {
             }
           })
           .catch(function (error) {
+            window.localStorage.removeItem("_certificate")
+            window.localStorage.removeItem("_username")
             alert("An error has occured during verification.\n" + error.message)
           })
       } catch (err) {
@@ -61,8 +63,6 @@ class Footer extends Component {
         let contents = window.localStorage.getItem("_certificate")
         let file = event.target.file.files[0]
 
-        console.log("Token received:", token)
-
         if (contents === null && file) {
           let reader = new FileReader()
           reader.onload = function(e) {
@@ -71,6 +71,7 @@ class Footer extends Component {
           }
           reader.readAsText(file)
         } else if (contents !== null) {
+          console.log("We were already logged in. Trying to verify the saved certficate.")
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
