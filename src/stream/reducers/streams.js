@@ -12,6 +12,7 @@ export default function reducer(state = {
             return {...state, fetching: true}
         }
         case "FETCH_STREAMS_REJECTED": {
+            
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_STREAMS_FULFILLED": {

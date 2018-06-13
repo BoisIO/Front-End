@@ -10,15 +10,9 @@ export default function reducer(state = {
 }, action){
     switch(action.type){
         // User
-        case "USER_LOGIN_PENDING": {
-            return {...state, fetching: true}
-        }
-        case "USER_LOGIN_REJECTED": {
-            return {...state, fetching: false, error: action.payload}
-        }
-        case "USER_LOGIN_FULFILLED": {
+        case "USER_LOGIN": {
             /* Dit is tijdelijk */
-            axios.defaults.headers['Token'] = action.payload.headers.token || action.payload.headers.Token
+            axios.defaults.headers['Token'] = action.meta.token
             return {...state, fetching: false, fetched: true, authenticated: true}
         }
 

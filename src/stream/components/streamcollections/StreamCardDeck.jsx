@@ -18,7 +18,7 @@ class StreamCardDeck extends Component {
                     {this.props.streams
                         .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User)
                         .filter(stream => {
-                            return stream.User.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
+                            return stream.User.User.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.User.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
                         })
                         .map(item =>
                         <CSSTransition key={item._id} timeout={500} classNames="fade">

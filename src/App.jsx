@@ -12,11 +12,10 @@ import StreamPageContainer from './stream/components/streamcontainer/StreamPageC
 import Login from './authentication/components/Login'
 import TransparentPersonPage from './ui/components/pages/TransparentPersonPage'
 import TransparentPersonDetailPage from './ui/components/pages/TransparentPersonDetailPage'
-import {login} from './authentication/actions/user'
 
 class App extends Component {
   componentWillMount() {
-    this.props.dispatch(login())
+    
   }
   render() {
     return (

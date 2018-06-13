@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 
 class StreamContainer extends Component {
     componentWillMount() {
-        //this.props.dispatch(getChat(this.props.stream._id))
+        this.props.dispatch(getChat(this.props.stream._id))
     }
     render() {
         return (

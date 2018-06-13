@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import axios from '../../axios'
 import crypto from 'crypto'
 import {Row, Col, Input} from 'react-materialize'
+import { connect } from 'react-redux'
+import {login} from '../actions/user'
 
-class Footer extends Component {
+class Login extends Component {
   constructor() {
     super()
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,8 +26,9 @@ class Footer extends Component {
           'Token': token,
           'Name': name
         }
-
-        axios.get('http://certifcation.herokuapp.com/login', {headers: headers})
+        axios.defaults.headers = headers
+        const _self = this
+        axios.get('http://certifcation.herokuapp.com/login', {headers: headers, forceUpdate: true})
           .then(function (response) {
             if (response.data.errorCode) {
               window.localStorage.removeItem("_certificate")
@@ -34,6 +37,7 @@ class Footer extends Component {
             } else {
               window.localStorage.setItem("_certificate", contents)
               window.localStorage.setItem("_username", name)
+              _self.props.dispatch(login(name, token))
               alert("Verified!")
             }
           })
@@ -55,7 +59,7 @@ class Footer extends Component {
     event.preventDefault()
 
     let _self = this
-    axios.get('http://certifcation.herokuapp.com/login', {headers: null})
+    axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
       .then(function (response) {
         let token = response.headers.token
         let name = event.target.user.value || window.localStorage.getItem("_user")
@@ -72,6 +76,7 @@ class Footer extends Component {
           reader.readAsText(file)
         } else if (contents !== null) {
           console.log("We were already logged in. Trying to verify the saved certficate.")
+          _self.props.dispatch(login(name))
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
@@ -115,4 +120,7 @@ class Footer extends Component {
   }
 }
 
-export default Footer
+function mapStateToProps(store) {
+  return store;
+}
+export default connect(mapStateToProps)(Login);

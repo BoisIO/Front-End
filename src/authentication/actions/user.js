@@ -1,5 +1,3 @@
-import axios from "../../axios";
-
 export function addStreamToUser(stream, x=0, y=0){
     return {
         type: "ADD_STREAM",
@@ -14,9 +12,12 @@ export function removeStreamFromUser(stream, event){
     }
 }
 
-export function login(userdata) {
+export function login(userdata, token) {
     return {
         type: "USER_LOGIN",
-        payload: axios.get("http://back3ndb0is.herokuapp.com/login")
+        meta: {
+            username: userdata,
+            token: token
+        }
     }
 }
