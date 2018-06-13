@@ -37,8 +37,8 @@ class Login extends Component {
             } else {
               window.localStorage.setItem("_certificate", contents)
               window.localStorage.setItem("_username", name)
+              window.localStorage.setItem("_token", token)
               _self.props.dispatch(login(name, token))
-              alert("Verified!")
             }
           })
           .catch(function (error) {
