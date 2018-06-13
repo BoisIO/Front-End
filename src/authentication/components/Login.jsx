@@ -76,7 +76,7 @@ class Login extends Component {
           reader.readAsText(file)
         } else if (contents !== null) {
           console.log("We were already logged in. Trying to verify the saved certficate.")
-          _self.props.dispatch(login(name))
+          _self.props.dispatch(login(name, token))
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
