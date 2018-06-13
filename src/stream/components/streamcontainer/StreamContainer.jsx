@@ -14,11 +14,9 @@ class StreamContainer extends Component {
     render() {
         return (
             <div className="streamcontainer">
-                <Row>
-                    <StreamVideo stream={this.props.stream}/>
-                    <ChatBoxContainer stream={this.props.stream}/>
-                    <ChatInput stream={this.props.stream}/>
-                </Row>
+                <StreamVideo stream={this.props.stream}/>
+                <ChatBoxContainer stream={this.props.stream}/>
+                <ChatInput stream={this.props.stream}/>
             </div>
         )
     }
