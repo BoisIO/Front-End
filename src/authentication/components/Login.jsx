@@ -25,14 +25,20 @@ class Footer extends Component {
           'Name': name
         }
 
-        axios.post('http://back3ndb0is.herokuapp.com/', '', {headers: headers})
+        console.log("Token sent:", token)
+
+        axios.get('http://certifcation.herokuapp.com/login', {headers: headers})
           .then(function (response) {
-            window.localStorage.setItem("_certificate", contents)
-            window.localStorage.setItem("_username", name)
-            alert("Verify succesful.")
+            if (response.data.errorCode) {
+              alert("An error has occured during verification.\n" + response.data.errorCode + ": " + response.data.message)
+            } else {
+              window.localStorage.setItem("_certificate", contents)
+              window.localStorage.setItem("_username", name)
+              alert("Verified!")
+            }
           })
           .catch(function (error) {
-            alert(error.message)
+            alert("An error has occured during verification.\n" + error.message)
           })
       } catch (err) {
         alert("The uploaded file was not a key file.")
@@ -46,14 +52,16 @@ class Footer extends Component {
     event.persist()
     event.preventDefault()
 
-    const _self = this
-    axios.get('http://back3ndb0is.herokuapp.com/login')
+    let _self = this
+    axios.get('http://certifcation.herokuapp.com/login', {headers: null})
       .then(function (response) {
-        const token = response.headers.token
-        const name = event.target.user.value || window.localStorage.getItem("_user")
+        let token = response.headers.token
+        let name = event.target.user.value || window.localStorage.getItem("_user")
 
         let contents = window.localStorage.getItem("_certificate")
         let file = event.target.file.files[0]
+
+        console.log("Token received:", token)
 
         if (contents === null && file) {
           let reader = new FileReader()
@@ -69,7 +77,7 @@ class Footer extends Component {
         }
       })
       .catch(function (error) {
-        alert(error.message)
+        alert("An error has occured during token retrieval.\n" + error.message)
       })
   }
 
