@@ -25,14 +25,22 @@ class Footer extends Component {
           'Name': name
         }
 
-        axios.post('http://back3ndb0is.herokuapp.com/', '', {headers: headers})
+        axios.get('http://certifcation.herokuapp.com/login', {headers: headers})
           .then(function (response) {
-            window.localStorage.setItem("_certificate", contents)
-            window.localStorage.setItem("_username", name)
-            alert("Verify succesful.")
+            if (response.data.errorCode) {
+              window.localStorage.removeItem("_certificate")
+              window.localStorage.removeItem("_username")
+              alert("An error has occured during verification.\n" + response.data.errorCode + ": " + response.data.message)
+            } else {
+              window.localStorage.setItem("_certificate", contents)
+              window.localStorage.setItem("_username", name)
+              alert("Verified!")
+            }
           })
           .catch(function (error) {
-            alert(error.message)
+            window.localStorage.removeItem("_certificate")
+            window.localStorage.removeItem("_username")
+            alert("An error has occured during verification.\n" + error.message)
           })
       } catch (err) {
         alert("The uploaded file was not a key file.")
@@ -46,11 +54,11 @@ class Footer extends Component {
     event.persist()
     event.preventDefault()
 
-    const _self = this
-    axios.get('http://back3ndb0is.herokuapp.com/login')
+    let _self = this
+    axios.get('http://certifcation.herokuapp.com/login', {headers: null})
       .then(function (response) {
-        const token = response.headers.token
-        const name = event.target.user.value || window.localStorage.getItem("_user")
+        let token = response.headers.token
+        let name = event.target.user.value || window.localStorage.getItem("_user")
 
         let contents = window.localStorage.getItem("_certificate")
         let file = event.target.file.files[0]
@@ -63,13 +71,14 @@ class Footer extends Component {
           }
           reader.readAsText(file)
         } else if (contents !== null) {
+          console.log("We were already logged in. Trying to verify the saved certficate.")
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
         }
       })
       .catch(function (error) {
-        alert(error.message)
+        alert("An error has occured during token retrieval.\n" + error.message)
       })
   }
 
