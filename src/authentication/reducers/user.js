@@ -23,7 +23,7 @@ export default function reducer(state = {
         }
 
         case "ADD_STREAM": {
-            if(state.openstreams.map(streamobject => streamobject.stream.ID).filter(streamobject => streamobject === action.payload.stream.ID).length >= 1) return state
+            if(state.openstreams.map(streamobject => streamobject.stream._id).filter(streamobject => streamobject === action.payload.stream._id).length >= 1) return state
             if(state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat(action.payload)}
             else return state;
 
