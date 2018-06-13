@@ -1,5 +1,3 @@
-import axios from "../../axios";
-
 export default function reducer(state = {
     openstreams: [],
     fetching: false,
@@ -9,12 +7,7 @@ export default function reducer(state = {
     user: {user: "Otterly Adowable", userimage: "/assets/img/otter2.jpg", message: "Hi", is_verified: true}
 }, action){
     switch(action.type){
-        // User
-        case "USER_LOGIN": {
-            /* Dit is tijdelijk */
-            axios.defaults.headers['Token'] = action.meta.token
-            return {...state, fetching: false, fetched: true, authenticated: true}
-        }
+        // User authentication
 
         case "USER_AUTHENTICATE_PENDING": {
             return state
@@ -29,10 +22,8 @@ export default function reducer(state = {
         }
 
         case "USER_AUTHENTICATE_FULFILLED": { 
-            if(action.meta !== undefined) {
-                window.localStorage.setItem("_certificate", action.meta.contents)
-                window.localStorage.setItem("_username", action.meta.name)
-            }
+            window.localStorage.setItem("_certificate", action.meta.contents)
+            window.localStorage.setItem("_username", action.meta.name)
             window.localStorage.setItem("_token", action.payload.headers.token)
             return {...state, authenticated: true}
         }

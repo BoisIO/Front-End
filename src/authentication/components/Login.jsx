@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
 import axios from '../../axios'
+import React, { Component } from 'react'
 import crypto from 'crypto'
 import {Row, Col, Input} from 'react-materialize'
 import { connect } from 'react-redux'
@@ -12,6 +12,9 @@ class Login extends Component {
     this.handleFile = this.handleFile.bind(this)
   }
 
+  componentWillMount() {
+    localStorage.clear()
+  }
   handleFile(token, name, contents) {
     if (token && name && contents) {
       let sign = crypto.createSign('RSA-SHA256')
@@ -26,7 +29,6 @@ class Login extends Component {
           'Token': token,
           'Name': name
         }
-        axios.defaults.headers = headers
 
         this.props.dispatch(authenticate(headers, {name: name, token: token, contents: contents}))
       } catch (err) {
@@ -41,33 +43,33 @@ class Login extends Component {
     event.persist()
     event.preventDefault()
   
-    this.props.dispatch(authenticate(null))
-    // axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
-    //   .then(function (response) {
-    //     let token = response.headers.token
-    //     let name = event.target.user.value || window.localStorage.getItem("_user")
+    //this.props.dispatch(authenticate(null, {name: null, token: null, contents: null}))
+    const _self = this
+    axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
+      .then(function (response) {
+        let token = response.headers.token
+        let name = event.target.user.value || window.localStorage.getItem("_user")
 
-    //     let contents = window.localStorage.getItem("_certificate")
-    //     let file = event.target.file.files[0]
+        let contents = window.localStorage.getItem("_certificate")
+        let file = event.target.file.files[0]
 
-    //     if (contents === null && file) {
-    //       let reader = new FileReader()
-    //       reader.onload = function(e) {
-    //         contents = e.target.result
-    //         _self.handleFile(token, name, contents)
-    //       }
-    //       reader.readAsText(file)
-    //     } else if (contents !== null) {
-    //       console.log("We were already logged in. Trying to verify the saved certficate.")
-    //       _self.props.dispatch(login(name, token))
-    //       _self.handleFile(token, name, contents)
-    //     } else {
-    //       alert("Not all data was entered.")
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     alert("An error has occured during token retrieval.\n" + error.message)
-    //   })
+        if (contents === null && file) {
+          let reader = new FileReader()
+          reader.onload = function(e) {
+            contents = e.target.result
+            _self.handleFile(token, name, contents)
+          }
+          reader.readAsText(file)
+        } else if (contents !== null) {
+          console.log("We were already logged in. Trying to verify the saved certficate.")
+          _self.handleFile(token, name, contents)
+        } else {
+          alert("Not all data was entered.")
+        }
+      })
+      .catch(function (error) {
+        alert("An error has occured during token retrieval.\n" + error.message)
+      })
   }
 
   render() {

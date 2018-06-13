@@ -8,8 +8,10 @@ import { getStreams } from '../../actions/streams';
 
 
 class StreamCardDeck extends Component {
-    componentWillMount() {
-        this.props.dispatch(getStreams())
+    componentDidMount() {
+        setTimeout(() => {
+            this.props.dispatch(getStreams())
+        }, 2000)
     }
     render() {
         return (

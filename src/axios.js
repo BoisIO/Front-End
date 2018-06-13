@@ -24,11 +24,18 @@ export default axios.create({
     return data
   }],
   transformRequest: [function(data, headers) {
-    if(localStorage.getItem("_token") !== null) {
-      axios.defaults.headers.Token = localStorage.getItem("_token")
-      axios.defaults.headers.Signature = signToken(localStorage.getItem("_token"), localStorage.getItem("_certificate"))
-      axios.defaults.headers.Name = localStorage.getItem("_username") 
+    if(localStorage.getItem("_token")) {
+      headers.Token = localStorage.getItem("_token")
+      if(localStorage.getItem("_certificate")) {
+        const signature = signToken(localStorage.getItem("_token"), localStorage.getItem("_certificate"))
+        headers.Name = localStorage.getItem("_username") 
+        headers.Signature = signature 
+        return data
+      } else {
+        return data
+      }
+    } else {
+      return data;
     }
-    return data
   }]
 })
