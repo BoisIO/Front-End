@@ -3,13 +3,9 @@ import ChatBoxContainer from '../../../chat/components/chatboxcontainer/ChatBoxC
 import StreamVideo from '../streamvideo/StreamVideo'
 import './StreamContainer.css'
 import ChatInput from '../../../chat/components/chatinput/ChatInput'
-import { getChat } from '../../../chat/actions/chat'
 import {connect} from 'react-redux'
 
 class StreamContainer extends Component {
-    componentWillMount() {
-        this.props.dispatch(getChat(this.props.stream._id))
-    }
     render() {
         return (
             <div className="streamcontainer">

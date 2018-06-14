@@ -6,7 +6,7 @@ class TransparentPersonThumbnail extends Component {
     render() {
         return (
             <Link to={"/people/"+this.props.person.ID}>
-                <div className="card streamcontainer">
+                <div className="card">
                     <div className="card-image">
                         <img className="responsive-image picfit" src={this.props.person.avatar} alt=""/>
                     </div>

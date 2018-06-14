@@ -9,6 +9,10 @@ export default function reducer(state = {
     switch(action.type){
         // User authentication
 
+        case "USER_AUTHENTICATE_FORCE": {
+            return {...state, authenticated: true}
+        }
+
         case "USER_AUTHENTICATE_PENDING": {
             return state
         }
@@ -18,10 +22,11 @@ export default function reducer(state = {
             window.localStorage.removeItem("_username")
             window.localStorage.removeItem("_token")
             alert("An error has occured during verification.\n" + action.payload)
-            return state
+            return {...state, authenticated: false}
         }
 
         case "USER_AUTHENTICATE_FULFILLED": { 
+            console.log("User authenticate")
             window.localStorage.setItem("_certificate", action.meta.contents)
             window.localStorage.setItem("_username", action.meta.name)
             window.localStorage.setItem("_token", action.payload.headers.token)
@@ -36,7 +41,7 @@ export default function reducer(state = {
             /* Hier moet iets van een melding die aangeeft dat je er maar 4 max mag hebben */
         }
         case "REMOVE_STREAM": {
-            return {...state, openstreams: state.openstreams.filter(e => e.stream.ID !== action.payload.stream.ID)}
+            return {...state, openstreams: state.openstreams.filter(e => e.stream._id !== action.payload.stream._id)}
         }
 
          // Retrieving chatmessages
@@ -47,7 +52,8 @@ export default function reducer(state = {
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_STREAMCHAT_FULFILLED": {
-            return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream, key) => {
+            console.log("Streamchat fetched")
+            return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
                 let streamitem = stream;
                 if (stream._id === action.meta.streamID) {
                     streamitem.messages = action.payload.data
@@ -55,6 +61,14 @@ export default function reducer(state = {
                 return streamitem
             })}
         }
+
+        // checking token
+        case "USER_AUTHENTICATE_CHECK_FULFILLED":
+            return {...state, authenticated: true}
+
+        case "USER_AUTHENTICATE_CHECK_REJECTED":
+            localStorage.clear()
+            return {...state, authenticated: false}
 
         // Sending chatmesssages
         case "SEND_STREAMCHAT_PENDING": {
@@ -64,7 +78,8 @@ export default function reducer(state = {
             return {...state, fetching: false, error: action.payload}
         }
         case "SEND_STREAMCHAT_FULFILLED": {
-            return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream, key) => {
+            console.log("Streamchat sent")
+            return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
                 let streamitem = stream.stream;
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages.push({

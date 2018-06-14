@@ -34,6 +34,6 @@ class App extends Component {
   }
 }
 function mapStateToProps(store) {
-  return store.user
+  return {authenticated: store.user.authenticated}
 }
 export default withRouter(connect(mapStateToProps)(App))

@@ -11,17 +11,12 @@ export function getChat(stream){
 }
 
 export function sendChatMessage(message, user, stream){
-    // return {
-    //     type: "SEND_STREAMCHAT",
-    //     payload: axios.get("http://server.com"),
-    //     meta: {
-    //         user: user,
-    //         message: message
-    //     }
-    // }
+    console.log(message)
     return {
         type: "SEND_STREAMCHAT_FULFILLED",
-        // payload: axios.get("http://server.com"),
+        payload: axios.post("http://back3ndb0is.herokuapp.com/chat/"+stream._id, {
+            content: message
+        }),
         meta: {
             user: user,
             message: message,

@@ -9,7 +9,7 @@ class ChatInput extends Component {
     }
     handleEnter(event) {
         if(event.key === 'Enter' && event.target.value.trim()){
-          this.props.dispatch(sendChatMessage(event.target.value.trim(), this.props.user.user, this.props.stream))
+          this.props.dispatch(sendChatMessage(event.target.value.trim(), this.props.user.name, this.props.stream))
           event.target.value = ""
         }
       }

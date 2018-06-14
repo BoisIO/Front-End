@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import crypto from 'crypto'
 import {Row, Col, Input} from 'react-materialize'
 import { connect } from 'react-redux'
-import {authenticate} from '../actions/user'
+import {authenticate, testToken} from '../actions/user'
 
 class Login extends Component {
   constructor() {
@@ -13,7 +13,9 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    localStorage.clear()
+    if(localStorage.getItem("_token") && localStorage.getItem("_certificate")) {
+      this.props.dispatch(testToken())
+    }
   }
   handleFile(token, name, contents) {
     if (token && name && contents) {
@@ -42,13 +44,13 @@ class Login extends Component {
   handleSubmit(event) {
     event.persist()
     event.preventDefault()
-  
-    //this.props.dispatch(authenticate(null, {name: null, token: null, contents: null}))
+    if(window.localStorage.getItem("_username") !== event.target.user.value) window.localStorage.setItem("_username", event.target.user.value)
+
     const _self = this
-    axios.get('http://certifcation.herokuapp.com/login', {headers: null, forceUpdate: true})
+    axios.get('http://back3ndb0is.herokuapp.com/login', {headers: null, forceUpdate: true})
       .then(function (response) {
         let token = response.headers.token
-        let name = event.target.user.value || window.localStorage.getItem("_user")
+        let name = event.target.user.value || window.localStorage.getItem("_username")
 
         let contents = window.localStorage.getItem("_certificate")
         let file = event.target.file.files[0]
@@ -68,6 +70,7 @@ class Login extends Component {
         }
       })
       .catch(function (error) {
+        console.log(error)
         alert("An error has occured during token retrieval.\n" + error.message)
       })
   }

@@ -16,6 +16,7 @@ export default function reducer(state = {
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_STREAMS_FULFILLED": {
+            console.log("Streams fetch")
             return {...state, fetching: false, fetched: true, streams: action.payload.data.map(stream => {return {...stream, messages: []}})}
         }
 

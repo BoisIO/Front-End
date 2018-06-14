@@ -9,7 +9,7 @@ class ChatMessage extends Component {
                 <div>
                     <div className="left">
                         <Chip>
-                            <img src={this.props.message.userimage} alt={"Avatar of " + this.props.message.user} />
+                            <img src={this.props.message.Avatar} alt={"Avatar of " + this.props.message.user} />
                             {this.props.message.user + (this.props.message.is_verified ? " ✔" : "")}
                         </Chip>
                     </div>
