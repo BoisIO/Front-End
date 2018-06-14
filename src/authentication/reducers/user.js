@@ -4,7 +4,7 @@ export default function reducer(state = {
     fetched: false,
     error: null,
     authenticated: false,
-    user: {user: "Otterly Adowable", userimage: "/assets/img/otter2.jpg", message: "Hi", is_verified: true}
+    user: {},
 }, action){
     switch(action.type){
         // User authentication
@@ -52,12 +52,13 @@ export default function reducer(state = {
             return {...state, fetching: false, error: action.payload}
         }
         case "FETCH_STREAMCHAT_FULFILLED": {
-            console.log("Streamchat fetched")
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
-                let streamitem = stream;
-                if (stream._id === action.meta.streamID) {
+                let streamitem = stream.stream;
+                console.log(streamitem, action.meta)
+                if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages = action.payload.data
                 }
+                streamitem.chattimestamp = action.payload.headers.timestamp
                 return streamitem
             })}
         }
@@ -83,13 +84,26 @@ export default function reducer(state = {
                 let streamitem = stream.stream;
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages.push({
-                        ...action.meta.user, 
-                        message: action.meta.message,
+                        User: {
+                            Avatar: state.user.Avatar,
+                            Name: state.user.Name,
+                            Date: Date.now()
+                        }, 
+                        Content: action.meta.message,
                     })
                 }
                 return streamitem
             })}
         }
+
+        case "FETCH_USERDATA_PENDING":
+            return state;
+        
+        case "FETCH_USERDATA_REJECTED":
+            return state;
+
+        case "FETCH_USERDATA_FULFILLED":
+            return {...state, user: action.payload.data}
 
         default: {
             return state;

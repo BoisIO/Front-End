@@ -7,8 +7,13 @@ import './StreamDraggableContainer.css'
 import { getChat } from '../../../chat/actions/chat';
 
 class StreamDraggableContainer extends Component {
+    interval
+
     componentWillMount() {
-        this.props.dispatch(getChat(this.props.stream._id))
+        this.interval = setInterval(() => this.props.dispatch(getChat(this.props.stream)), 8000)
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval)
     }
     render() {
         return (

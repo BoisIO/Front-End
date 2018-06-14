@@ -77,32 +77,30 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="section">
-          <form onSubmit={this.handleSubmit.bind(this)}>
-            <Row>
-              <Input name="user" placeholder="Enter your name…" s={12} label="User" validate />
-            </Row>
-            <Row>
-              <div className="file-field input-field col s12">
-                <div className="btn waves-effect waves-light">
-                  <span><i className="material-icons">add</i></span> 
-                  <input id="file" type="file" />
-                </div>
-                <div className="file-path-wrapper">
-                  <input className="file-path validate" type="text" placeholder="Please select your certificate…" />
-                </div>
+      <div className="section">
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <Row>
+            <Input name="user" placeholder="Enter your name…" s={12} label="User" validate />
+          </Row>
+          <Row>
+            <div className="file-field input-field col s12">
+              <div className="btn waves-effect waves-light">
+                <span><i className="material-icons">add</i></span> 
+                <input id="file" type="file" />
               </div>
-            </Row>
-            <Row>
-              <Col s={12}>
-                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-                    <i className="material-icons right">cloud</i>
-                </button>
-              </Col>
-            </Row>
-          </form>
-        </div>
+              <div className="file-path-wrapper">
+                <input className="file-path validate" type="text" placeholder="Please select your certificate…" />
+              </div>
+            </div>
+          </Row>
+          <Row>
+            <Col s={12}>
+              <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                  <i className="material-icons right">cloud</i>
+              </button>
+            </Col>
+          </Row>
+        </form>
       </div>
     )
   }

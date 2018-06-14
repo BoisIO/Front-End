@@ -2,16 +2,28 @@ import React, { Component } from 'react'
 import {Row, Col} from 'react-materialize'
 import {connect} from 'react-redux';
 import TransparentPersonThumbnail from '../transparentpersonthumbnails/TransparentPersonThumbnail'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { getPeople } from '../../actions/people';
 
 class TransparentPersonDeck extends Component {
+    componentWillMount() {
+        this.props.dispatch(getPeople())
+    }
     render() {
         return (
             <Row>
-                {this.props.people.people.map(item =>
-                    <Col s={12} m={4} l={2} key={item.ID}> 
-                        <TransparentPersonThumbnail person={item}/>
-                    </Col>
-                )}
+                {this.props.people.fetching?<div className="center">
+                    "Fetching userdata... please wait a few seconds"
+                </div>:null}
+                <TransitionGroup>
+                        {this.props.people.people.map(item =>
+                            <CSSTransition key={item._id} timeout={500} classNames="fade">
+                                <Col s={12} m={4} l={2} key={item._id}> 
+                                    <TransparentPersonThumbnail person={item}/>
+                                </Col>
+                            </CSSTransition>
+                        )}
+                </TransitionGroup>
             </Row>
         )
     }

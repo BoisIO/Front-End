@@ -27,7 +27,7 @@ export function login(userdata, token) {
 export function authenticate(headers, meta) {
     return {
         type: "USER_AUTHENTICATE",
-        payload: axios.get('http://back3ndb0is.herokuapp.com/login', {headers: headers, forceUpdate: true}),
+        payload: axios.get('/login', {headers: headers, forceUpdate: true}),
         meta: meta
     }
 }
@@ -35,6 +35,13 @@ export function authenticate(headers, meta) {
 export function testToken() {
     return {
         type: "USER_AUTHENTICATE_CHECK",
-        payload: axios.get('http://back3ndb0is.herokuapp.com/token')
+        payload: axios.get('/token')
+    }
+}
+
+export function getUserData(username) {
+    return {
+        type: "FETCH_USERDATA",
+        payload: axios.get('/users/'+username)
     }
 }

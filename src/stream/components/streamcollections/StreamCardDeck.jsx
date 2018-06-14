@@ -14,9 +14,12 @@ class StreamCardDeck extends Component {
     render() {
         return (
             <Row>
+                {this.props.fetching?<div className="center">
+                    Fetching streamdata... please wait a few seconds
+                </div>:null}
                 <TransitionGroup>
                     {this.props.streams
-                        .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User)
+                        .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User._id)
                         .filter(stream => {
                             return stream.User.Name.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.User.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
                         })
@@ -34,6 +37,6 @@ class StreamCardDeck extends Component {
 }
 
 function mapStateToProps(store) {
-    return {streams: store.streams.streams, searchword: store.streams.searchword};
+    return {streams: store.streams.streams, searchword: store.streams.searchword, fetching: store.streams.fetching};
 }
 export default connect(mapStateToProps)(StreamCardDeck);

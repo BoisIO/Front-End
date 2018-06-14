@@ -9,10 +9,12 @@ class ChatBoxContainer extends Component {
     }
     render() {
         return (
-            <ul className="collection" style={{maxHeight: '200px', overflowY: 'scroll', margin: '0'}}>
-                {this.props.stream.messages.map((item, key) => <ChatMessage key={key} message={item} />)}
-                <span ref={"bottom_"+this.props.stream.ID}></span>
-            </ul>
+            <div>
+                <ul className="collection" style={{overflowY: 'scroll', margin: '0'}}>
+                    {this.props.stream.messages.map((item, key) => <ChatMessage key={key} message={item} />)}
+                    <span ref={"bottom_"+this.props.stream.ID} style={{height: "100px"}}></span>
+                </ul>
+            </div>
         )
     }
 }
