@@ -20,7 +20,7 @@ class Login extends Component {
   handleFile(token, name, contents) {
     if (token && name && contents) {
       let sign = crypto.createSign('RSA-SHA256')
-      sign.write(token)
+      sign.write(JSON.stringify({}))
       sign.end()
 
       try {

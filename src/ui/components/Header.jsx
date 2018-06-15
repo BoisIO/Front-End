@@ -17,7 +17,7 @@ class Header extends Component {
               </Link>
               <ul className="right hide-on-med-and-down">
                 <li><Link to="/people">Transparent people</Link></li>
-                <li onClick={() => this.props.dispatch(logout())}>Leave</li>
+                <li className="link" onClick={() => this.props.dispatch(logout())}>Leave</li>
               </ul>
               <ul id="nav-mobile" className="sidenav">
                 <li><Link to="/people">Transparent people</Link></li>

@@ -3,18 +3,18 @@ import crypto from 'crypto' // Crypto library voor het signen
 
 import { throttleAdapterEnhancer, cacheAdapterEnhancer, Cache } from 'axios-extensions' // Enhancers voor cache en throttling
 
-function signToken(token, contents) { // Functie om tokens te signen
-  if(!token) return false // Om te voorkomen dat alles vastloopt als de token leeg is
+function signToken(data, certificate) { // Functie om datas te signen
+  if(!data) return false // Om te voorkomen dat alles vastloopt als de data leeg is
 
   let sign = crypto.createSign('RSA-SHA256') // De sign instantie
-  sign.write(token) // Het token wordt gesigned 
+  sign.write(data) // Het token wordt gesigned 
   sign.end() 
-  return sign.sign(contents, 'hex') // De signature wordt teruggestuurd
+  return sign.sign(certificate, 'hex') // De signature wordt teruggestuurd
 }
 
 export default axios.create({ // Genereer een speciale instantie die in de hele applicatie gebrui8kt wordt
-  //baseURL: 'http://localhost:5000/', // Baseurl die we op dit moment niet gebruiken
-  baseURL: 'http://back3ndb0is.herokuapp.com/', // Baseurl die we op dit moment niet gebruiken
+  baseURL: 'http://localhost:5000/', // Baseurl die we op dit moment niet gebruiken
+  //baseURL: 'http://back3ndb0is.herokuapp.com/', // Baseurl die we op dit moment niet gebruiken
   headers: {
     "Content-Type": "application/json"
   },
@@ -32,13 +32,11 @@ export default axios.create({ // Genereer een speciale instantie die in de hele 
   }],
   transformRequest: [function(data, headers) { // De 'interceptor' voor de request
     if(localStorage.getItem("_token")) { // Indien er een token staat in localstorage
-      //console.table({type:"request", oldtoken: localStorage.getItem("_token"), newtoken: headers.token}) // Momenteel om te debuggen
       headers.Token = localStorage.getItem("_token") // Verander de header van de request want wij hebben dit token nodig
       if(localStorage.getItem("_certificate")) { // Kijk of er een certificaat beschikbaar is
-        const signature = signToken(localStorage.getItem("_token"), localStorage.getItem("_certificate")) // Sign de token met het certificaat
+        const signature = signToken(JSON.stringify(data || {}), localStorage.getItem("_certificate")) // Sign de token met het certificaat
         headers.Name = localStorage.getItem("_username")  // De gebruikersnaam
         headers.Signature = signature  // De signature
-
         return JSON.stringify(data) // Verzend de data als json
       } else {
         return JSON.stringify(data) // Verzend de data als json
