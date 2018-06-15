@@ -26,7 +26,6 @@ export default function reducer(state = {
         }
 
         case "USER_AUTHENTICATE_FULFILLED": { 
-            console.log("User authenticate")
             window.localStorage.setItem("_certificate", action.meta.contents)
             window.localStorage.setItem("_username", action.meta.name)
             window.localStorage.setItem("_token", action.payload.headers.token)
@@ -56,6 +55,18 @@ export default function reducer(state = {
                 let streamitem = stream.stream
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages = action.payload.data
+                    //streamitem.messages = streamitem.messages.concat(action.payload.data)
+                }
+                //if(action.payload.headers.timestamp !== 0 && action.payload.headers.timestamp !== "0") streamitem.chattimestamp = action.payload.headers.timestamp
+                return streamitem
+            })}
+        }
+
+        case "CONCAT_STREAMCHAT": {
+            return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
+                let streamitem = stream.stream
+                if (streamitem._id === action.meta.message.Stream) {
+                    streamitem.messages.push(action.meta.message)
                     //streamitem.messages = streamitem.messages.concat(action.payload.data)
                 }
                 //if(action.payload.headers.timestamp !== 0 && action.payload.headers.timestamp !== "0") streamitem.chattimestamp = action.payload.headers.timestamp

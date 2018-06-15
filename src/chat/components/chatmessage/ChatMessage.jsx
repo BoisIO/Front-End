@@ -8,7 +8,6 @@ class ChatMessage extends Component {
         return moment(time).fromNow()
     }
     render() {
-        console.log(this.props.message)
         return (
             <li className="collection-item">
                 <div>

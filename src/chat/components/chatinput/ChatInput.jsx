@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
-import { sendChatMessage } from '../../../chat/actions/chat'
+//import { sendChatMessage } from '../../../chat/actions/chat'
+import { sendMessage } from '../../../socket'
 
 class ChatInput extends Component {
     constructor() {
@@ -9,7 +10,8 @@ class ChatInput extends Component {
     }
     handleEnter(event) {
         if(event.key === 'Enter' && event.target.value.trim()){
-          this.props.dispatch(sendChatMessage(event.target.value.trim(), this.props.user.name, this.props.stream))
+            //this.props.dispatch(sendChatMessage(event.target.value.trim(), this.props.user.name, this.props.stream))
+            sendMessage(event.target.value.trim(), localStorage.getItem("_username"), this.props.stream._id, this.props.user.user.PublicKey)
           event.target.value = ""
         }
       }

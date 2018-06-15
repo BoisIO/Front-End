@@ -29,3 +29,12 @@ export function sendChatMessage(message, user, stream){
         }
     }
 }
+
+export function loadMessage(message){
+    return {
+        type: "CONCAT_STREAMCHAT",
+        meta: {
+            message: message
+        }
+    }
+}
