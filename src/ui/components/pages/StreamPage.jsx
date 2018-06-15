@@ -6,7 +6,6 @@ import SearchBar from '../../../ui/components/searchbar/SearchBar'
 
 class StreamPage extends Component {
     render() {
-        console.log(this.props)
         return (
             <div>
                 <Row>
