@@ -23,6 +23,11 @@ class TransparentPersonDetailPage extends Component {
                         <p className="text-slogan">{person.Slogan}</p>
                     </Col>
                 </Row>
+                <Row>
+                    <Col l={12}>
+                        <h2>Streams:</h2>
+                    </Col>
+                </Row>
                 <StreamCardDeck userspecific={person._id}/>
             </Container>
         )
