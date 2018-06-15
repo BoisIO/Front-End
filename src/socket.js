@@ -4,7 +4,7 @@ import {signToken} from './signatures'
 let socket
 
 function open() {
-    socket = openSocket('http://localhost:5000/chat/socket');
+    socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket');
 }
 
 function subscribeToChat(cb) {
