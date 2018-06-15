@@ -57,7 +57,7 @@ export default function reducer(state = {
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages.concat(action.payload.data)
                 }
-                streamitem.chattimestamp = action.payload.headers.timestamp
+                if(action.payload.headers.timestamp !== 0 && action.payload.headers.timestamp !== "0") streamitem.chattimestamp = action.payload.headers.timestamp
                 return streamitem
             })}
         }
