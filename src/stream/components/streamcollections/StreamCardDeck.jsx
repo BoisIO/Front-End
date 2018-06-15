@@ -23,6 +23,16 @@ class StreamCardDeck extends Component {
                         .filter(stream => {
                             return stream.User.Name.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.User.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
                         })
+                        .sort((a,b) => {
+                            switch(this.props.page) {
+                                default: 
+                                    return a>b
+                                case "popular":
+                                    return a.Viewers > b.Viewers
+                                case "discover":
+                                    return a.Viewers < b.Viewers
+                            }
+                        })
                         .map(item =>
                         <CSSTransition key={item._id} timeout={500} classNames="fade">
                             <Col s={12} m={6} l={3}> 

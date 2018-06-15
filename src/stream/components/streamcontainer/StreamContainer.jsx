@@ -12,6 +12,7 @@ class StreamContainer extends Component {
                 <StreamVideo stream={this.props.stream}/>
                 <ChatBoxContainer stream={this.props.stream}/>
                 <ChatInput stream={this.props.stream}/>
+                <div className="handle center" style={{color: "black", width:"100%"}}>:::::::</div>
             </div>
         )
     }

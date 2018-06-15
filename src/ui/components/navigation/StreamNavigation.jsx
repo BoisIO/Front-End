@@ -7,15 +7,15 @@ class StreamNavigation extends Component {
     render() {
         return (
             <div>
-                {/* <div class="collapsible-header">
-                    <img src="/assets/img/menu_burger.svg" alt="Burger icon"/>
-                </div> */}
                 <ul className="collection">
-                    <Link to="/popular" className="collection-item">
-                        <p className="SidemenuItem">Popular</p>
+                    <Link to="/" className="collection-item">
+                        <p className={"SidemenuItem "+this.props.page===""?"active":null}>All</p>
                     </Link>
-                    <Link to="/trending" className="collection-item">
-                        <p className="SidemenuItem">Trending</p>
+                    <Link to="/popular" className="collection-item">
+                        <p className={"SidemenuItem "+this.props.page==="popular"?"active":null}>Popular</p>
+                    </Link>
+                    <Link to="/discover" className="collection-item">
+                        <p className={"SidemenuItem "+this.props.page==="discover"?"active":null}>Trending</p>
                     </Link>
                 </ul>
             </div>
