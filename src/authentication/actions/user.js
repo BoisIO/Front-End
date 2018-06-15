@@ -45,3 +45,9 @@ export function getUserData(username) {
         payload: axios.get('/users/'+username)
     }
 }
+
+export function logout() {
+    return {
+        type: "USER_LOGOUT"
+    }
+}

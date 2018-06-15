@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {Col, Row} from 'react-materialize'
+import {logout} from '../../authentication/actions/user'
 
 class Header extends Component {
   render() {
@@ -15,10 +16,12 @@ class Header extends Component {
                 <span className="vertical-middle hide-on-med-and-down">GoStreamYourself</span>
               </Link>
               <ul className="right hide-on-med-and-down">
-                <li><Link to="/people">All transparent people</Link></li>
+                <li><Link to="/people">Transparent people</Link></li>
+                <li onClick={() => this.props.dispatch(logout())}>Leave</li>
               </ul>
               <ul id="nav-mobile" className="sidenav">
-                <li><Link to="/people">All transparent people</Link></li>
+                <li><Link to="/people">Transparent people</Link></li>
+                <li onClick={() => this.props.dispatch(logout())}>Leave</li>
               </ul>
               <Link to="/streams" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></Link>
             </Col>

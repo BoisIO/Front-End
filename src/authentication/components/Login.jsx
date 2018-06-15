@@ -89,7 +89,7 @@ class Login extends Component {
                 <input id="file" type="file" />
               </div>
               <div className="file-path-wrapper">
-                <input className="file-path validate" type="text" placeholder="Please select your certificate…" />
+                <input className="file-path validate" type="text" placeholder="Please select your key…" />
               </div>
             </div>
           </Row>

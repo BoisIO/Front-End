@@ -53,8 +53,7 @@ export default function reducer(state = {
         }
         case "FETCH_STREAMCHAT_FULFILLED": {
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
-                let streamitem = stream.stream;
-                console.log(streamitem, action.meta)
+                let streamitem = stream.stream
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages = action.payload.data
                 }
@@ -79,7 +78,6 @@ export default function reducer(state = {
             return {...state, fetching: false, error: action.payload}
         }
         case "SEND_STREAMCHAT_FULFILLED": {
-            console.log("Streamchat sent")
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
                 let streamitem = stream.stream;
                 if (streamitem._id === action.meta.stream._id) {
@@ -87,7 +85,8 @@ export default function reducer(state = {
                         User: {
                             Avatar: state.user.Avatar,
                             Name: state.user.Name,
-                            Date: Date.now()
+                            Date: Date.now(),
+                            IsTransparent: state.user.IsTransparent
                         }, 
                         Content: action.meta.message,
                     })
@@ -104,6 +103,11 @@ export default function reducer(state = {
 
         case "FETCH_USERDATA_FULFILLED":
             return {...state, user: action.payload.data}
+
+        case "USER_LOGOUT":
+            localStorage.clear()
+            return {...state, authenticated: false};
+
 
         default: {
             return state;

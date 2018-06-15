@@ -20,9 +20,9 @@
 }
 .chat-send {
     margin: 0.25em 1em;
-    position: fixed;
+    /* position: fixed;
     bottom:0;
-    width:80%;
+    width:80%; */
     background-color: #FFF;
 }
 

@@ -10,6 +10,7 @@ class StreamDraggableContainer extends Component {
     interval
 
     componentWillMount() {
+        this.props.dispatch(getChat(this.props.stream))
         this.interval = setInterval(() => this.props.dispatch(getChat(this.props.stream)), 8000)
     }
     componentWillUnmount() {

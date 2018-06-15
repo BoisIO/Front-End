@@ -25,7 +25,7 @@ export function sendChatMessage(message, user, stream){
         meta: {
             user: user,
             message: message,
-            stream: stream
+            stream: stream,
         }
     }
 }

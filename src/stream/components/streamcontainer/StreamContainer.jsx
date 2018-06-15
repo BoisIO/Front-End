@@ -10,10 +10,8 @@ class StreamContainer extends Component {
         return (
             <div className="streamcontainer">
                 <StreamVideo stream={this.props.stream}/>
-                <div >
-                    <ChatBoxContainer stream={this.props.stream}/>
-                    <ChatInput stream={this.props.stream}/>
-                </div>
+                <ChatBoxContainer stream={this.props.stream}/>
+                <ChatInput stream={this.props.stream}/>
             </div>
         )
     }

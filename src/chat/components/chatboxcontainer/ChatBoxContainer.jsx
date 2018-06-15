@@ -10,7 +10,7 @@ class ChatBoxContainer extends Component {
     render() {
         return (
             <div>
-                <ul className="collection" style={{overflowY: 'scroll', margin: '0'}}>
+                <ul className="collection" style={{overflowY: 'scroll', margin: '0', maxHeight: "250px"}}>
                     {this.props.stream.messages.map((item, key) => <ChatMessage key={key} message={item} />)}
                     <span ref={"bottom_"+this.props.stream.ID} style={{height: "100px"}}></span>
                 </ul>
