@@ -26,11 +26,11 @@ class StreamCardDeck extends Component {
                         .sort((a,b) => {
                             switch(this.props.page) {
                                 default: 
-                                    return a>b
+                                    return 0
                                 case "popular":
-                                    return a.Viewers > b.Viewers
-                                case "discover":
                                     return a.Viewers < b.Viewers
+                                case "discover":
+                                    return a.Viewers > b.Viewers
                             }
                         })
                         .map(item =>

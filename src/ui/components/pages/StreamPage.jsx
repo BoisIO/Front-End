@@ -6,15 +6,16 @@ import SearchBar from '../../../ui/components/searchbar/SearchBar'
 
 class StreamPage extends Component {
     render() {
+        console.log(this.props)
         return (
             <div>
                 <Row>
                     <Col s={12} m={12} l={2}>
-                        <StreamNavigation page={this.props.match.params.page} />
+                        <StreamNavigation page={this.props.match.params.subpage} />
                     </Col>
                     <Col s={12} m={12} l={10}>
                         <SearchBar/>
-                        <StreamCardDeck page={this.props.match.params.page} />
+                        <StreamCardDeck page={this.props.match.params.subpage} />
                     </Col>
                 </Row>
             </div>

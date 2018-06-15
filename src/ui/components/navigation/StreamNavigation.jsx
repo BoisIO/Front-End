@@ -15,7 +15,7 @@ class StreamNavigation extends Component {
                         <p className={"SidemenuItem "+this.props.page==="popular"?"active":null}>Popular</p>
                     </Link>
                     <Link to="/discover" className="collection-item">
-                        <p className={"SidemenuItem "+this.props.page==="discover"?"active":null}>Trending</p>
+                        <p className={"SidemenuItem "+this.props.page==="discover"?"active":null}>Discover</p>
                     </Link>
                 </ul>
             </div>
