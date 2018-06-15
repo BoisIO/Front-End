@@ -15,6 +15,8 @@ class Login extends Component {
   componentWillMount() {
     if(localStorage.getItem("_token") && localStorage.getItem("_certificate")) {
       this.props.dispatch(testToken())
+    } else {
+      localStorage.clear()
     }
   }
   handleFile(token, name, contents) {
@@ -37,6 +39,7 @@ class Login extends Component {
         alert("The uploaded file was not a key file.")
       }
     } else { 
+      localStorage.clear()
       alert("Not all data was entered.")
     }
   }
@@ -47,7 +50,7 @@ class Login extends Component {
     if(window.localStorage.getItem("_username") !== event.target.user.value) window.localStorage.setItem("_username", event.target.user.value)
 
     const _self = this
-    axios.get('http://back3ndb0is.herokuapp.com/login', {headers: null, forceUpdate: true})
+    axios.get('/login', {headers: null, forceUpdate: true})
       .then(function (response) {
         let token = response.headers.token
         let name = event.target.user.value || window.localStorage.getItem("_username")

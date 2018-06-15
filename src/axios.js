@@ -24,7 +24,7 @@ function verify(data, signature) {
 export default axios.create({ // Genereer een speciale instantie die in de hele applicatie gebrui8kt wordt
   baseURL: 'http://localhost:5000/', // Baseurl die we op dit moment niet gebruiken
   //baseURL: 'http://back3ndb0is.herokuapp.com/', // Baseurl die we op dit moment niet gebruiken
-  headers: {
+  headers: { 
     "Content-Type": "application/json"
   },
   adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter, {enabledByDefault:false, defaultCache: new Cache({maxAge: 1000*60*60})})), //Adapters en caching

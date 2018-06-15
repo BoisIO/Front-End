@@ -13,7 +13,7 @@ class Header extends Component {
             <Col l={10} s={12} m={12}>
               <Link id="logo-container" to="/" className="brand-logo vertical-align-center">
                 <img src="/assets/img/favicon-32x32.png" className="vertical-middle gsy-logo" alt=""/>
-                <span className="vertical-middle hide-on-med-and-down">GoStreamYourself</span>
+                {Math.floor(Math.random()*100)===1?<span className="vertical-middle hide-on-med-and-down">GoFuckYourself</span>:<span className="vertical-middle hide-on-med-and-down">GoStreamYourself</span>}
               </Link>
               <ul className="right hide-on-med-and-down">
                 <li><Link to="/people">Transparent people</Link></li>
