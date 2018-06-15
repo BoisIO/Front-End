@@ -5,7 +5,9 @@ import {logout} from '../../authentication/actions/user'
 class Logout extends Component {
   render() {
     return (
-        <span style={{cursor: "pointer"}} onClick={() => this.props.dispatch(logout())}>Leave</span>
+        <span>
+          {this.props.user.authenticated?<span style={{cursor: "pointer"}} onClick={() => this.props.dispatch(logout())}>Leave</span>:null}
+        </span>
       )
   }
 }

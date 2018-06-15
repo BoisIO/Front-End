@@ -55,7 +55,7 @@ export default function reducer(state = {
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
                 let streamitem = stream.stream
                 if (streamitem._id === action.meta.stream._id) {
-                    streamitem.messages = action.payload.data
+                    streamitem.messages.concat(action.payload.data)
                 }
                 streamitem.chattimestamp = action.payload.headers.timestamp
                 return streamitem
@@ -106,7 +106,7 @@ export default function reducer(state = {
 
         case "USER_LOGOUT":
             localStorage.clear()
-            return {...state, authenticated: false};
+            return {...state, authenticated: false, user: {}, openstreams: []};
 
 
         default: {
