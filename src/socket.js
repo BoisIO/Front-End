@@ -11,7 +11,9 @@ function open() {
 function subscribeToChat(cb) {
     open()
     socket.on('MESSAGE', data => {
-        if(verify(JSON.stringify(data.Content), data.Signature)) {
+        const Signature = data.Signature
+        delete data.Signature
+        if(verify(JSON.stringify(data), Signature)) {
             cb(data)
         } else {
             alert('Received dirty data from server!')
