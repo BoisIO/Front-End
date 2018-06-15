@@ -8,12 +8,13 @@ class ChatMessage extends Component {
         return moment(time).fromNow()
     }
     render() {
+        console.log(this.props.message)
         return (
             <li className="collection-item">
                 <div>
                     <div className="left">
                         <Chip>
-                            <img src={this.props.message.User.Avatar} alt=""/>
+                            <img src={this.props.message.User.Avatar || "/assets/img/404.png"} alt=""/>
                             {this.props.message.User.Name + (this.props.message.User.Transparant ? " ✔" : "")}
                         </Chip>
                     </div>

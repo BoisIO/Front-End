@@ -55,7 +55,8 @@ export default function reducer(state = {
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
                 let streamitem = stream.stream
                 if (streamitem._id === action.meta.stream._id) {
-                    streamitem.messages.concat(action.payload.data)
+                    
+                    streamitem.messages = streamitem.messages.concat(action.payload.data)
                 }
                 if(action.payload.headers.timestamp !== 0 && action.payload.headers.timestamp !== "0") streamitem.chattimestamp = action.payload.headers.timestamp
                 return streamitem
