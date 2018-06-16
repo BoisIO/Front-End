@@ -24,6 +24,29 @@ export default function reducer(state = {
             return {...state, searchword: action.payload}
         }
 
+        // Searching streams
+        case "STREAMS_UPDATE_VIEWERS": {
+            return {...state, streams: state.streams.map((stream) => {
+                return {
+                    ...stream,
+                    Viewers: action.payload[stream._id] || 0
+                }
+            })}
+        }
+
+        case "STREAMS_UPDATE_VIEWERS_ON_LEAVE": {
+            return {...state, streams: state.streams.map((stream) => {
+                if(stream._id === action.payload) {
+                    return {
+                        ...stream,
+                        Viewers: --stream.Viewers
+                    }
+                } else {
+                    return stream
+                }
+            })}
+        }
+
         // Default
         default: {
             return state;

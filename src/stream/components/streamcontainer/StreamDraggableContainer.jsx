@@ -6,14 +6,18 @@ import Rnd from 'react-rnd'
 import './StreamDraggableContainer.css'
 import { getChat, loadMessage } from '../../../chat/actions/chat';
 
-import { subscribeToChat, disconnect as disconnectChat } from '../../../socket'
+import { subscribeToChat, disconnect as disconnectChat, subscribeToViewerCount } from '../../../socket'
+import { loadViewers, loadViewersOnLeave } from '../../actions/streams';
 
 class StreamDraggableContainer extends Component {
 
     constructor(props) {
         super(props)
-        subscribeToChat((data) => {
+        subscribeToChat(props.stream._id, (data) => {
             props.dispatch(loadMessage(data))
+        })
+        subscribeToViewerCount(data => {
+            props.dispatch(loadViewers(data))
         })
         this.closeWindow = this.closeWindow.bind(this)
     }
@@ -21,13 +25,13 @@ class StreamDraggableContainer extends Component {
     componentWillMount() {
         this.props.dispatch(getChat(this.props.stream))
     }
-    componentWillUnmount() {
-        
-    }
+
     closeWindow(e) {
         disconnectChat()
+        this.props.dispatch(loadViewersOnLeave(this.props.stream._id))
         this.props.dispatch(removeStreamFromUser(this.props.stream, e))
     }
+
     render() {
         return (
             <Rnd bounds="body" default={{x: this.props.x/2, y: this.props.y/2, height: 500, width: 330}} minWidth={300} minHeight={480} maxHeight={850} maxWidth={900} lockAspectRatio={false} dragHandleClassName=".handle">

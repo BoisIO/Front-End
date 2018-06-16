@@ -13,3 +13,17 @@ export function searchStreams(key) {
         payload: key
     }
 }
+
+export function loadViewers(data) {
+    return {
+        type: "STREAMS_UPDATE_VIEWERS",
+        payload: data
+    }
+}
+
+export function loadViewersOnLeave(stream) {
+    return {
+        type: "STREAMS_UPDATE_VIEWERS_ON_LEAVE",
+        payload: stream
+    }
+}

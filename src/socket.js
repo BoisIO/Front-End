@@ -3,13 +3,17 @@ import {signToken, verify} from './signatures'
 
 let socket
 
-function open() {
-    socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket');
-    //socket = openSocket('http://localhost:5000/chat/socket');
+function open(stream) {
+    //socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket');
+    socket = openSocket('http://localhost:5000/chat/socket', {
+        query: {
+            stream: stream
+        }
+    });
 }
 
-function subscribeToChat(cb) {
-    open()
+function subscribeToChat(stream, cb) {
+    open(stream)
     socket.on('MESSAGE', data => {
         const Signature = data.Signature
         delete data.Signature
@@ -21,17 +25,28 @@ function subscribeToChat(cb) {
     });
 }
 
+function subscribeToViewerCount(cb) {
+    socket.on('VIEWERS', data => {
+        const Signature = data.Signature
+        delete data.Signature
+        if(verify(JSON.stringify(data), Signature)) {
+            cb(data)
+        }
+    })
+}
+
 function sendMessage(message, username, stream, userkey) {
-    socket.emit("MESSAGE_SEND", {
+    let packet = {
         content: message,
         username: username,
         stream: stream,
-        signature: signToken(message, localStorage.getItem('_certificate')),
         userkey: userkey
-    })
+    }
+    packet.signature = signToken(JSON.stringify(packet), localStorage.getItem('_certificate'))
+    socket.emit("MESSAGE_SEND", packet)
 }
 
 function disconnect() {
     socket.emit("end")
 }
-export { subscribeToChat, sendMessage, disconnect, open };
+export { subscribeToChat, sendMessage, disconnect, open, subscribeToViewerCount };
