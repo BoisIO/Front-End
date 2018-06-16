@@ -37,6 +37,7 @@ class Login extends Component {
         this.props.dispatch(authenticate(headers, {name: name, token: token, contents: contents}))
       } catch (err) {
         alert("The uploaded file was not a key file.")
+        localStorage.clear()
       }
     } else { 
       localStorage.clear()
@@ -70,11 +71,13 @@ class Login extends Component {
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
+          localStorage.clear()
         }
       })
       .catch(function (error) {
         console.log(error)
         alert("An error has occured during token retrieval.\n" + error.message)
+        localStorage.clear()
       })
   }
 
