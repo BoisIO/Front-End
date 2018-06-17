@@ -21,6 +21,7 @@ class TransparentPersonDetailPage extends Component {
                         <h2>{person.Name}</h2>
                         <p>{person.Transparant?"This peron is a transparent person!":"This person is not a transparent person"}</p>
                         <p className="text-slogan">{person.Slogan}</p>
+                        <p className="text-slogan">{person.BoisCoins || 0} BoisCoins</p>
                     </Col>
                 </Row>
                 <Row>

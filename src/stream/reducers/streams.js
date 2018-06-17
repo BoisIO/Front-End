@@ -39,7 +39,7 @@ export default function reducer(state = {
                 if(stream._id === action.payload) {
                     return {
                         ...stream,
-                        Viewers: --stream.Viewers
+                        Viewers: --stream.Viewers<0?0:stream.Viewers
                     }
                 } else {
                     return stream
