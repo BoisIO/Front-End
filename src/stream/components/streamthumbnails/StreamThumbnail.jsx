@@ -23,6 +23,6 @@ class StreamThumbnail extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return {dispatch: store.dispatch};
 }
 export default connect(mapStateToProps)(StreamThumbnail);

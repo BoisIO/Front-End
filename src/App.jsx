@@ -27,9 +27,7 @@ class App extends Component {
           <Route exact path="/loginPage" component={(props)=> <LoginPage {...props} />}/>
           <Route path="/people/:id" component={(props)=> this.props.authenticated?<TransparentPersonDetailPage {...props} />:<LoginPage/>}/> 
           <Route exact path="/people" component={()=> this.props.authenticated?<TransparentPersonPage />:<LoginPage/>}/>
-          <Route path="/search/:keyword" component={(props)=> this.props.authenticated?<StreamPage { ...props}/>:<LoginPage/>}/>
           <Route path="/:subpage" component={(props)=> this.props.authenticated?<StreamPage { ...props}/>:<LoginPage/>}/>
-          <Route exact path="/test" component={(props)=> this.props.authenticated?<Test {...props}/>:<LoginPage/>}/>
           <Route path="/" component={(props)=> this.props.authenticated?<StreamPage {...props} />:<LoginPage/>}/>
         </Switch>
         <Footer/>
