@@ -3,8 +3,8 @@ import { throttleAdapterEnhancer, cacheAdapterEnhancer, Cache } from 'axios-exte
 import {verify, signToken} from './signatures'
 
 export default axios.create({ // Genereer een speciale instantie die in de hele applicatie gebrui8kt wordt
-  //baseURL: 'http://localhost:5000/', // Baseurl die we op dit moment niet gebruiken
-  baseURL: 'http://back3ndb0is.herokuapp.com/', // Baseurl die we op dit moment niet gebruiken
+  baseURL: 'http://localhost:5000/', // Baseurl die we op dit moment niet gebruiken
+  //baseURL: 'http://back3ndb0is.herokuapp.com/', // Baseurl die we op dit moment niet gebruiken
   headers: { 
     "Content-Type": "application/json"
   },
