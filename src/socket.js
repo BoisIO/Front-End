@@ -4,8 +4,8 @@ import {signToken, verify} from './signatures'
 let socket
 
 function open(stream) {
-    //socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket', {
-    socket = openSocket('http://localhost:5000/chat/socket', {
+    socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket', {
+    //socket = openSocket('http://localhost:5000/chat/socket', {
         query: {
             stream: stream
         }
