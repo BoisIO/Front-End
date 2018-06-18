@@ -4,7 +4,6 @@ import './App.css'
 
 import Header from './ui/components/Header'
 import Footer from './ui/components/Footer'
-import Test from './Test'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import StreamPage from './ui/components/pages/StreamPage'
