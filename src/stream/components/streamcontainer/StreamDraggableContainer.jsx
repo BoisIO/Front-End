@@ -13,7 +13,7 @@ class StreamDraggableContainer extends Component {
 
     constructor(props) {
         super(props)
-        subscribeToChat(props.stream._id, (data) => {
+        subscribeToChat(props.stream._id, props.user.user.PublicKey, props.user.user.Name, (data) => {
             props.dispatch(loadMessage(data))
         })
         subscribeToViewerCount(data => {

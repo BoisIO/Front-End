@@ -3,17 +3,20 @@ import {signToken, verify} from './signatures'
 
 let socket
 
-function open(stream) {
-    socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket', {
-    //socket = openSocket('http://localhost:5000/chat/socket', {
+function open(stream, userkey, username) {
+    //socket = openSocket('http://back3ndb0is.herokuapp.com/chat/socket', {
+    socket = openSocket('http://localhost:5000/chat/socket', {
         query: {
-            stream: stream
+            stream: stream,
+            userkey: userkey,
+            signature: signToken(stream, localStorage.getItem("_certificate")),
+            username: username
         }
     });
 }
 
-function subscribeToChat(stream, cb) {
-    open(stream)
+function subscribeToChat(stream, userkey, username, cb) {
+    open(stream, userkey, username)
     socket.on('MESSAGE', data => {
         const Signature = data.Signature
         delete data.Signature
