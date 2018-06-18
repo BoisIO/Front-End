@@ -34,7 +34,7 @@ export default axios.create({ // Genereer een speciale instantie die in de hele 
     if(localStorage.getItem("_token")) { // Indien er een token staat in localstorage
       headers.Token = localStorage.getItem("_token") // Verander de header van de request want wij hebben dit token nodig
       if(localStorage.getItem("_certificate")) { // Kijk of er een certificaat beschikbaar is
-        const signature = signToken(JSON.stringify(data || {}), localStorage.getItem("_certificate")) // Sign de token met het certificaat
+        const signature = signToken(JSON.stringify(data || {token: localStorage.getItem('_token')}), localStorage.getItem("_certificate")) // Sign de token met het certificaat
         headers.Name = localStorage.getItem("_username")  // De gebruikersnaam
         headers.Signature = signature  // De signature
         return JSON.stringify(data) // Verzend de data als json
