@@ -54,7 +54,7 @@ class Login extends Component {
     const _self = this
     axios.get('/login', {headers: null, forceUpdate: true})
       .then(function (response) {
-        let token = response.headers.token
+        let token = response.headers.Token
         let name = event.target.user.value || window.localStorage.getItem("_username")
 
         let contents = window.localStorage.getItem("_certificate")
