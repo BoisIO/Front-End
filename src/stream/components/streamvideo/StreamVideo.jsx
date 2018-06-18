@@ -3,8 +3,9 @@ import openSocket from 'socket.io-client'
 import JSMpeg from 'jsmpeg-player'
 
 class StreamVideo extends Component {
-    componentWillMount() {
+    componentDidMount() {
         const canvas = this.refs.videoplayer
+
         const socket = openSocket('http://back3ndb0is.herokuapp.com/streams/socket')
         const self = this
         socket.on('connect',function(){
@@ -14,7 +15,7 @@ class StreamVideo extends Component {
             })
         })
 
-        var player = new JSMpeg.Player('pipe',{
+        const player = new JSMpeg.Player('pipe',{
             canvas:canvas
         });
 
