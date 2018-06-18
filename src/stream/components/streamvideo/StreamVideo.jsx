@@ -1,14 +1,32 @@
 import React, {Component} from 'react'
+import openSocket from 'socket.io-client'
+import JSMpeg from 'jsmpeg-player'
 
-class StreamContainer extends Component {
+class StreamVideo extends Component {
+    componentWillMount() {
+        const canvas = this.refs.videoplayer
+        const socket = openSocket('http://back3ndb0is.herokuapp.com/streams/socket')
+        const self = this
+        socket.on('connect',function(){
+            socket.emit('f', {
+                function:'getStream',
+                feed: self.props.stream._id
+            })
+        })
+
+        var player = new JSMpeg.Player('pipe',{
+            canvas:canvas
+        });
+
+        socket.on('h264', function (data) {
+            player.write(data.buffer)
+        });
+    }
     render() {
         return (
-            <video autoPlay loop controls style={{backgroundColor: "#263238", color: "white"}}>
-                <source src="/assets/video/otterdance.mp4" type="mp4"/>
-                Your browser does not support the VIDEO tag and/or RTP streams.
-            </video>
+            <canvas id="canvas" height="200" width="200" ref="videoplayer"></canvas>
         )
     }
 }
 
-export default StreamContainer;
+export default StreamVideo;

@@ -8,6 +8,7 @@
     "axios-extensions": "^3.0.2",
     "bootstrap-material-design": "^4.1.1",
     "je-moeder": "0.0.6",
+    "jsmpeg-player": "^1.2.0",
     "materialize-css": "^1.0.0-rc.1",
     "moment": "^2.22.2",
     "react": "^16.4.0",
