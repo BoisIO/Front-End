@@ -42,6 +42,7 @@ class Login extends Component {
     } else { 
       localStorage.clear()
       alert("Not all data was entered.")
+      console.log(token, name, contents)
     }
   }
 
@@ -71,6 +72,7 @@ class Login extends Component {
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
+          console.log(contents, file)
           localStorage.clear()
         }
       })
