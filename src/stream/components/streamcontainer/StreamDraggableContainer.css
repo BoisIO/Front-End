@@ -17,9 +17,10 @@
 }
 
 .streamcontainercontrolsclose {
-    right:0; 
-    left: auto;
+    line-height: 24px;
+    right: 0;
     z-index: 3;
+    font-size: 0.75em;
     cursor: pointer;
 }
 
@@ -35,8 +36,9 @@
 }
 
 .streamcontainercontrolstitle {
-    left:0;
-    z-index:1;
+    line-height: 24px;
+    left: 5px;
+    z-index: 1;
     font-size: 0.75em;
 }
 

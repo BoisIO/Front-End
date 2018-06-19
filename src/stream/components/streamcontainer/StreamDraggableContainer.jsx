@@ -38,8 +38,8 @@ class StreamDraggableContainer extends Component {
                 <div className="card draggablecontainer" style={{margin: 0}}>
                     <div className="streamcontainercontrols">
                         <span className="handle streamcontainercontrolsdrag">:::::::</span>
-                        <span className="streamcontainercontrolsclose" onClick={this.closeWindow}>X</span>
-                        <span className="streamcontainercontrolstitle" >{this.props.stream.User.Name}</span>
+                        <span className="streamcontainercontrolsclose" onClick={this.closeWindow}><i className="verified material-icons">close</i></span>
+                        <span className="streamcontainercontrolstitle truncate" >{this.props.stream.User.Name}</span>
                     </div>
                     <StreamContainer stream={this.props.stream}/>
                 </div>

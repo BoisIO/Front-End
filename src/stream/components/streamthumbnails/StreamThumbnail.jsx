@@ -13,9 +13,9 @@ class StreamThumbnail extends Component {
                     <StreamThumbnailPicture src={this.props.stream.User.Avatar} alt={"Avatar of "+this.props.stream.User.User}/>
                 </div>
                 <div className="card-content">
-                    <p className="text-title">{this.props.stream.User.Name}</p>
+                    <p className="text-title truncate">{this.props.stream.User.Name}</p>
                     <p className="text-slogan truncate">{this.props.stream.User.Slogan ? this.props.stream.User.Slogan : 'No slogan.'}</p>
-                    <p className="text-muted">{this.props.stream.Viewers} followers</p>
+                    <p className="text-muted truncate">{this.props.stream.Viewers} followers</p>
                 </div>
             </div>
         )
