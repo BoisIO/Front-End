@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import openSocket from 'socket.io-client'
-import JSMpeg from 'jsmpeg-player'
 
 class StreamVideo extends Component {
     componentDidMount() {
@@ -15,7 +14,7 @@ class StreamVideo extends Component {
             })
         })
 
-        const player = new JSMpeg.Player('pipe',{
+        const player = new window.JSMpeg.Player('pipe',{
             canvas:canvas
         });
 
