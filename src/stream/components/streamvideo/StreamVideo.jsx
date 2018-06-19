@@ -6,7 +6,7 @@ class StreamVideo extends Component {
     componentDidMount() {
         const canvas = this.refs.videoplayer
 
-        const socket = openSocket('http://back3ndb0is.herokuapp.com/streams/socket')
+        const socket = openSocket('http://145.49.55.236:8001/')
         const self = this
         socket.on('connect',function(){
             socket.emit('f', {
