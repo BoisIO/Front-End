@@ -5,17 +5,18 @@ import './ChatMessage.css'
 
 class ChatMessage extends Component {
     timeAgo(time) {
-        return moment(time).fromNow()
+        return moment(time).format("LT")
     }
     render() {
         return (
             <li className="collection-item">
                 <div>
                     <div className="left">
-                        <Chip>
+                        <div class="chip">
                             <img src={this.props.message.User.Avatar || "/assets/img/404.png"} alt=""/>
-                            {this.props.message.User.Name + (this.props.message.User.Transparant ? " ✔" : "")}
-                        </Chip>
+                            <span className="username truncate">{this.props.message.User.Name}</span>
+                            {this.props.message.User.Transparant ? <i class="verified material-icons">check</i> : null}
+                        </div>
                     </div>
                     <span className="text-muted chat-timestamp right">{this.timeAgo(this.props.message.Date)}</span>
                     <div className="clear" />
