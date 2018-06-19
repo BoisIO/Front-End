@@ -1,5 +1,4 @@
 import axios from 'axios' // Axios library voor de http client
-import { throttleAdapterEnhancer, cacheAdapterEnhancer, Cache } from 'axios-extensions' // Enhancers voor cache en throttling
 import {verify, signToken} from './signatures'
 
 export default axios.create({ // Genereer een speciale instantie die in de hele applicatie gebrui8kt wordt
@@ -8,7 +7,6 @@ export default axios.create({ // Genereer een speciale instantie die in de hele 
   headers: { 
     "Content-Type": "application/json"
   },
-  adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter, {enabledByDefault:false, defaultCache: new Cache({maxAge: 1000*60*60})})), //Adapters en caching
   transformResponse: [function (data, headers) { // De 'interceptor' die ons helpt standaard een response te manipuleren
     //console.table({type:"response", oldtoken: localStorage.getItem("_token"), newtoken: headers.token}) // Om te loggen bij het debuggen
     if(headers.Token) localStorage.setItem("_token", headers.Token) // Mits er een token in de header zit dan zetten wij die in localstorage
@@ -20,6 +18,7 @@ export default axios.create({ // Genereer een speciale instantie die in de hele 
           return JSON.parse(data)
         } else {
           alert("Something went wrong while verifiying the serverdata!")
+          window.location.reload()
           throw new axios.Cancel('Dirty data found')
         }
       } else {
