@@ -4,13 +4,9 @@ import {Row, Col} from 'react-materialize'
 import {connect} from 'react-redux'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './StreamCardDeck.css'
-import { getStreams } from '../../actions/streams';
 
 
 class StreamCardDeck extends Component {
-    componentWillMount() {
-        if(this.props.streams.length === 0) this.props.dispatch(getStreams())
-    }
     render() {
         return (
             <Row>

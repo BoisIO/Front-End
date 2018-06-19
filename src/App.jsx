@@ -12,10 +12,25 @@ import LoginPage from './ui/components/pages/LoginPage'
 import TransparentPersonPage from './ui/components/pages/TransparentPersonPage'
 import TransparentPersonDetailPage from './ui/components/pages/TransparentPersonDetailPage'
 import { getUserData } from './authentication/actions/user';
+import { getStreams } from './stream/actions/streams';
 
 class App extends Component {
+  interval = null
+
   componentWillReceiveProps(nextProps) {
-    if(nextProps.authenticated && !nextProps.user.Name) this.props.dispatch(getUserData(localStorage.getItem("_username")))
+    if(nextProps.authenticated && !nextProps.user.Name) {
+      this.props.dispatch(getUserData(localStorage.getItem("_username")))
+      this.props.dispatch(getStreams())
+    }
+    if(nextProps.authenticated) {
+      this.interval = setInterval(() => {
+          this.props.dispatch(getStreams())
+      },15000)
+    }
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.interval)
   }
   render() {
     return (
