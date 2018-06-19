@@ -16,7 +16,7 @@ class ChatMessage extends Component {
                     <div className="left">
                         <div className="chip">
                             <img src={this.props.message.User.Avatar || "/assets/img/404.png"} alt=""/>
-                            <span className="username truncate">{this.props.message.User.Name}</span>
+                            <span className="username truncate" title={this.props.message.User.Name}>{this.props.message.User.Name}</span>
                             {this.props.message.User.Transparant ? <i className="verified material-icons">check</i> : null}
                         </div>
                     </div>
