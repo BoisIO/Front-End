@@ -9,7 +9,7 @@ import { getStreams } from '../../actions/streams';
 
 class StreamCardDeck extends Component {
     componentWillMount() {
-        this.props.dispatch(getStreams())
+        if(this.props.streams.length === 0) this.props.dispatch(getStreams())
     }
     render() {
         return (
