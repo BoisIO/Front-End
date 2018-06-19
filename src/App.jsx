@@ -18,20 +18,20 @@ class App extends Component {
   interval = null
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.authenticated && !nextProps.user.Name) {
+    if (nextProps.authenticated && !nextProps.user.Name) {
       this.props.dispatch(getUserData(localStorage.getItem("_username")))
       this.props.dispatch(getStreams())
     }
-    if(nextProps.authenticated) {
-      this.interval = setInterval(() => {
-          this.props.dispatch(getStreams())
-      },15000)
-    }
   }
   
-  componentWillUnmount() {
-    clearInterval(this.interval)
+  componentDidMount() {
+    this.interval = setInterval(() => this.props.dispatch(getStreams()), 15000)
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     return (
       <div>
