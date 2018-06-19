@@ -15,7 +15,7 @@ import { getUserData } from './authentication/actions/user';
 
 class App extends Component {
   componentWillReceiveProps(nextProps) {
-    if(nextProps.authenticated && !nextProps.user.user) this.props.dispatch(getUserData(localStorage.getItem("_username")))
+    if(nextProps.authenticated && !nextProps.user.Name) this.props.dispatch(getUserData(localStorage.getItem("_username")))
   }
   render() {
     return (

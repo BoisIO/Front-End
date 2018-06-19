@@ -23,7 +23,7 @@ class StreamDraggableContainer extends Component {
     }
 
     componentWillMount() {
-        this.props.dispatch(getChat(this.props.stream))
+       if(this.props.stream.messages.length === 0)  this.props.dispatch(getChat(this.props.stream))
     }
 
     closeWindow(e) {
