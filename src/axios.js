@@ -8,25 +8,35 @@ export default axios.create({ // Genereer een speciale instantie die in de hele 
     "Content-Type": "application/json"
   },
   transformResponse: [function (data, headers) { // De 'interceptor' die ons helpt standaard een response te manipuleren
-    //console.table({type:"response", oldtoken: localStorage.getItem("_token"), newtoken: headers.token}) // Om te loggen bij het debuggen
-    if(headers.Token) localStorage.setItem("_token", headers.Token) // Mits er een token in de header zit dan zetten wij die in localstorage
-    if(headers.token) localStorage.setItem("_token", headers.token) // In het geval dat de back-end boys weer iets fout doen met hoofdletters
+    if (headers.Token || headers.token) localStorage.setItem("_token", headers.Token || headers.token)
+
     try {
-      JSON.parse(data)
-      if(headers.signature && headers.signature !== null && headers.signature !== undefined) {
-        if(verify(data, headers.signature)) {
-          return JSON.parse(data)
-        } else {
-          alert("Something went wrong while verifiying the serverdata!")
-          window.location.reload()
-          throw new axios.Cancel('Dirty data found')
-        }
+      let actData
+
+      if (data.trim()) {
+        actData = JSON.parse(data)
       } else {
-        return JSON.parse(data) // Parse de data als json / js
+        actData = data
+      }
+      
+      if (headers.signature) {
+        // Wanneer een gebruiker is ingelogd en er is data.
+        if (verify(data, headers.signature)) {
+          return actData
+        } else {
+          window.location.reload()
+          throw new axios.Cancel('Something went wrong while verifying the server data.')
+        }
+      } else if (!headers.signature && !actData) {
+        // Wanneer een gebruiker niet is ingelogd en er geen data is.
+        return actData
+      } else {
+        // Gebruiker is niet ingelogd maar er is wel data.
+        throw new axios.Cancel('Something went wrong while verifying the server data.')
       }
     }
     catch (e) {
-      return data // Indien dat niet ging geven we gewoon de data los terug
+      throw new axios.Cancel('Something went wrong while verifying the server data.')
     }
   }],
   transformRequest: [function(data, headers) { // De 'interceptor' voor de request
