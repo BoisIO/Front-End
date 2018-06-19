@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Chip } from 'react-materialize'
 import moment from 'moment'
 import './ChatMessage.css'
 
