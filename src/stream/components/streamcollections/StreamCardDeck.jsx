@@ -24,9 +24,9 @@ class StreamCardDeck extends Component {
                                 default: 
                                     return 0
                                 case "popular":
-                                    return a.Viewers < b.Viewers
-                                case "discover":
                                     return a.Viewers > b.Viewers
+                                case "discover":
+                                    return 0.5 - Math.random()
                             }
                         })
                         .map(item =>
