@@ -11,8 +11,8 @@ class ChatMessage extends Component {
     }
     render() {
         return (
-            <li className="collection-item">
-                <div>
+            <li className="collection-item" style={{overflow: 'hidden'}}>
+                <div style={{zIndex: 10, position: 'relative', background: '#fff'}}>
                     <div className="left">
                         <div className="chip">
                             <img src={this.props.message.User.Avatar || "/assets/img/404.png"} alt=""/>
