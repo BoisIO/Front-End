@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
-import openSocket from 'socket.io-client'
 
 class StreamVideo extends Component {
-    componentDidMount() {
+    componentDidMount(){
         const canvas = this.refs.videoplayer
 
-        const socket = openSocket('http://145.49.55.236:8001/')
+        const socket = window.io('http://145.49.55.236:8001')
         const self = this
         socket.on('connect',function(){
             socket.emit('f', {
@@ -22,9 +21,10 @@ class StreamVideo extends Component {
             player.write(data.buffer)
         });
     }
+    shouldComponentUpdate() { return false }
     render() {
         return (
-            <canvas id="canvas" height="200" width="200" ref="videoplayer"></canvas>
+            <canvas style={{backgroundColor:"black"}} height="200" width="200" ref="videoplayer"></canvas>
         )
     }
 }
