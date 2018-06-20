@@ -13,10 +13,10 @@ class Login extends Component {
   }
 
   componentWillMount() {
-    if(localStorage.getItem("_token") && localStorage.getItem("_certificate")) {
+    if(window.localStorage.getItem("_token") && window.localStorage.getItem("_certificate")) {
       this.props.dispatch(testToken())
     } else {
-      localStorage.clear()
+      window.localStorage.clear()
     }
   }
   handleFile(token, name, contents) {
@@ -37,10 +37,10 @@ class Login extends Component {
         this.props.dispatch(authenticate(headers, {name: name, token: token, contents: contents}))
       } catch (err) {
         alert("The uploaded file was not a key file.")
-        localStorage.clear()
+        window.localStorage.clear()
       }
     } else { 
-      localStorage.clear()
+      window.localStorage.clear()
       alert("Not all data was entered.")
       console.log(token, name, contents)
     }
