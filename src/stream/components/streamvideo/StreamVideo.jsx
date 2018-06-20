@@ -6,8 +6,7 @@ class StreamVideo extends Component {
         const socket = openSocket('http://145.49.55.236:8001')
         socket.on('connect',function(){
             socket.emit('f', {
-                function:'getStream',
-                feed: '1'
+                function:'getStream'
             })
         })
 
