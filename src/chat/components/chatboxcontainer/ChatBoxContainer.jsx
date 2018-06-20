@@ -24,7 +24,7 @@ class ChatBoxContainer extends Component {
     render() {
         return (
             <div>
-                <ul id="chat-messages" className="collection" style={{overflowY: 'scroll', margin: '0', maxHeight: "250px"}}>
+                <ul id="chat-messages" className="collection" style={{overflowY: 'scroll', margin: '0', maxHeight: "230px"}}>
                     {!this.state.loadHistory && this.props.stream.messages.length > 50
                         ? <li className="collection-item center"><Button onClick={() => this.setState({loadHistory: true})}>Load history</Button></li>
                         : null

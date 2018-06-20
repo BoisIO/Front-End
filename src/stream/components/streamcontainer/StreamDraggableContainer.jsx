@@ -34,7 +34,7 @@ class StreamDraggableContainer extends Component {
 
     render() {
         return (
-            <Rnd bounds="body" default={{x: this.props.x/2, y: this.props.y/2, height: 700, width: 330}} minWidth={300} minHeight={180} maxHeight={950} maxWidth={900} lockAspectRatio={false} dragHandleClassName=".handle">
+            <Rnd bounds="body" default={{x: this.props.x/2, y: this.props.y/2, height: 700, width: 330}} minWidth={300} minHeight={100} maxHeight={950} maxWidth={900} lockAspectRatio={false} dragHandleClassName=".handle">
                 <div className="card draggablecontainer" style={{margin: 0}}>
                     <div className="streamcontainercontrols">
                         <span className="handle streamcontainercontrolsdrag">:::::::</span>
