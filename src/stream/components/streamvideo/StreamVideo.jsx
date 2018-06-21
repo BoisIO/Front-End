@@ -1,6 +1,6 @@
 import openSocket from "socket.io-client"
 import React, {Component} from "react"
-import JSMpeg from './jsmpeg'
+import {JSMpeg} from './jsmpeg'
 
 class StreamVideo extends Component {
     socket = null

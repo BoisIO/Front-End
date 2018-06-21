@@ -2444,4 +2444,4 @@ JSMpeg.AudioOutput.WebAudio = function() {
     return WebAudioOut
 }();
 
-module.exports = JSMpeg
+module.exports = {JSMpeg}
