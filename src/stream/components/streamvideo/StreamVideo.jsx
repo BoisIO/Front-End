@@ -20,21 +20,17 @@ class StreamVideo extends Component {
         })
 
         this.socket.on("h264", function (data) {
-            self.player.write(data.buffer)
+            if(data.stream === self.props.stream.User._id) {
+                self.player.write(data.buffer)
+            }
         })
     }
     componentWillUnmount() {
-        try {
-            this.socket.emit('disconnect')
-            this.socket._onDisconnect()
-        }
-        catch (e) {
-
-        }
-        this.player.isPlaying = false
+        this.socket.emit('end', () => {
+            this.player = null
+        })
     }
     render() {
-        console.log('Done this: '+this.socket)
         return (
             <canvas style={{backgroundColor:"black"}} ref={"videocanvas_"+this.props.stream._id}></canvas>
         )
