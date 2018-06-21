@@ -15,7 +15,7 @@ class StreamCardDeck extends Component {
                 </div>
                 <TransitionGroup>
                     {this.props.streams
-                        .filter(stream => stream.Live)
+                        .filter(stream => stream.Live || this.props.userspecific !== undefined)
                         .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User._id)
                         .filter(stream => {
                             return stream.User.Name.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.User.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
