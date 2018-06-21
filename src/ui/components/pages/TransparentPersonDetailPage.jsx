@@ -9,7 +9,7 @@ class TransparentPersonDetailPage extends Component {
         if(this.props.people.length === 0) this.props.dispatch(getPeople())
     }
     render() {
-        const person = this.props.people.filter(user => user._id === this.props.match.params.id)[0] || {avatar:"/assets/img/404.png", user:"Unknown user", slogan: "User not found"}
+        const person = this.props.people.filter((user) => user._id === this.props.match.params.id)[0] || {avatar:"/assets/img/404.png", user:"Unknown user", slogan: "User not found"}
         return (
             <Container>
                 <Row>

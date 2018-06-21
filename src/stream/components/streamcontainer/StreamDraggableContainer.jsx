@@ -15,7 +15,7 @@ class StreamDraggableContainer extends Component {
         subscribeToChat(props.stream._id, props.user.user.PublicKey, props.user.user.Name, (data) => {
             props.dispatch(loadMessage(data))
         })
-        subscribeToViewerCount(data => {
+        subscribeToViewerCount((data) => {
             props.dispatch(loadViewers(data))
         })
         this.closeWindow = this.closeWindow.bind(this)

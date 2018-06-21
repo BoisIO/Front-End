@@ -17,7 +17,7 @@ function open(stream, userkey, username) {
 
 function subscribeToChat(stream, userkey, username, cb) {
     open(stream, userkey, username)
-    socket.on("MESSAGE", data => {
+    socket.on("MESSAGE", (data) => {
         const Signature = data.Signature
         delete data.Signature
         if(verify(JSON.stringify(data), Signature)) {
@@ -29,7 +29,7 @@ function subscribeToChat(stream, userkey, username, cb) {
 }
 
 function subscribeToViewerCount(cb) {
-    socket.on("VIEWERS", data => {
+    socket.on("VIEWERS", (data) => {
         const Signature = data.Signature
         delete data.Signature
         if(verify(JSON.stringify(data), Signature)) {

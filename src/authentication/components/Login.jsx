@@ -42,7 +42,6 @@ class Login extends Component {
     } else { 
       window.localStorage.clear()
       alert("Not all data was entered.")
-      console.log(token, name, contents)
     }
   }
 
@@ -68,16 +67,13 @@ class Login extends Component {
           }
           reader.readAsText(file)
         } else if (contents !== null) {
-          console.log("We were already logged in. Trying to verify the saved certficate.")
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
-          console.log(contents, file)
           localStorage.clear()
         }
       })
       .catch(function (error) {
-        console.log(error)
         alert("An error has occured during token retrieval.\n" + error.message)
         localStorage.clear()
       })

@@ -36,11 +36,11 @@ class App extends Component {
         <StreamPageContainer/>
         <Header/>
         <Switch>
-          <Route exact path="/loginPage" component={(props)=> <LoginPage {...props} />}/>
-          <Route path="/people/:id" component={(props)=> this.props.authenticated?<TransparentPersonDetailPage {...props} />:<LoginPage/>}/> 
-          <Route exact path="/people" component={()=> this.props.authenticated?<TransparentPersonPage />:<LoginPage/>}/>
-          <Route path="/:subpage" component={(props)=> this.props.authenticated?<StreamPage { ...props}/>:<LoginPage/>}/>
-          <Route path="/" component={(props)=> this.props.authenticated?<StreamPage {...props} />:<LoginPage/>}/>
+          <Route exact path="/loginPage" component={(props) => <LoginPage {...props} />}/>
+          <Route path="/people/:id" component={(props) => this.props.authenticated ? <TransparentPersonDetailPage {...props} /> : <LoginPage/>}/> 
+          <Route exact path="/people" component={() => this.props.authenticated ? <TransparentPersonPage /> : <LoginPage/>}/>
+          <Route path="/:subpage" component={(props) => this.props.authenticated ? <StreamPage { ...props}/> : <LoginPage/>}/>
+          <Route path="/" component={(props) => this.props.authenticated ? <StreamPage {...props} /> : <LoginPage/>}/>
         </Switch>
         <Footer/>
       </div>

@@ -15,9 +15,9 @@ class StreamCardDeck extends Component {
                 </div>
                 <TransitionGroup>
                     {this.props.streams
-                        .filter(stream => stream.Live)
-                        .filter(stream => this.props.userspecific === undefined || this.props.userspecific === stream.User._id)
-                        .filter(stream => {
+                        .filter((stream) => stream.Live)
+                        .filter((stream) => this.props.userspecific || this.props.userspecific === stream.User._id)
+                        .filter((stream) => {
                             return stream.User.Name.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase()) || stream.User.Slogan.trim().toLowerCase().includes(this.props.searchword.trim().toLowerCase())
                         })
                         .sort((a,b) => {
@@ -30,12 +30,12 @@ class StreamCardDeck extends Component {
                                     return 0.5 - Math.random()
                             }
                         })
-                        .map(item =>
-                        <CSSTransition key={item._id} timeout={500} classNames="fade">
-                            <Col s={12} m={6} l={3}> 
-                                <StreamThumbnail stream={item}/>
-                            </Col>
-                        </CSSTransition>
+                        .map((item) =>
+                            <CSSTransition key={item._id} timeout={500} classNames="fade">
+                                <Col s={12} m={6} l={3}> 
+                                    <StreamThumbnail stream={item}/>
+                                </Col>
+                            </CSSTransition>
                     )}
                 </TransitionGroup>
             </Row>

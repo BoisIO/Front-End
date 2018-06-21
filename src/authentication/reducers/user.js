@@ -33,14 +33,14 @@ export default function reducer(state = {
         }
 
         case "ADD_STREAM": {
-            if(state.openstreams.map(streamobject => streamobject.stream._id).filter(streamobject => streamobject === action.payload.stream._id).length >= 1) return state
-            if(state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat({...action.payload, chattimestamp: 0})}
+            if (state.openstreams.map(streamobject => streamobject.stream._id).filter(streamobject => streamobject === action.payload.stream._id).length >= 1) return state
+            if (state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat({...action.payload, chattimestamp: 0})}
             else return state
 
             /* Hier moet iets van een melding die aangeeft dat je er maar 4 max mag hebben */
         }
         case "REMOVE_STREAM": {
-            return {...state, openstreams: state.openstreams.filter(e => e.stream._id !== action.payload.stream._id)}
+            return {...state, openstreams: state.openstreams.filter((e) => e.stream._id !== action.payload.stream._id)}
         }
 
          // Retrieving chatmessages
