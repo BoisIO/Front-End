@@ -1,4 +1,4 @@
-import axios from '../../axios'
+import axios from "../../axios"
 
 export function addStreamToUser(stream, x=0, y=0){
     return {
@@ -27,7 +27,7 @@ export function login(userdata, token) {
 export function authenticate(headers, meta) {
     return {
         type: "USER_AUTHENTICATE",
-        payload: axios.get('/login', {headers: headers, forceUpdate: true}),
+        payload: axios.get("/login", {headers: headers, forceUpdate: true}),
         meta: meta
     }
 }
@@ -35,14 +35,14 @@ export function authenticate(headers, meta) {
 export function testToken() {
     return {
         type: "USER_AUTHENTICATE_CHECK",
-        payload: axios.get('/token')
+        payload: axios.get("/token")
     }
 }
 
 export function getUserData(username) {
     return {
         type: "FETCH_USERDATA",
-        payload: axios.get('/users/'+username)
+        payload: axios.get("/users/"+username)
     }
 }
 

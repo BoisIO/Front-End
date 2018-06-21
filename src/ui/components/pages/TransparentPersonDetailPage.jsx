@@ -16,7 +16,7 @@ class TransparentPersonDetailPage extends Component {
                     <Col s={12} m={3} l={3}>
                         <br/>
                         <br/>
-                        <img className="circle responsive-image picfit" style={{maxWidth: "100%"}} src={person.Avatar} alt=""/>
+                        <img className="responsive-image picfit" style={{maxWidth: "100%"}} src={person.Avatar} alt=""/>
                     </Col>
                     <Col s={12} m={9} l={9}>
                         <h2>{person.Name}</h2>
