@@ -25,7 +25,9 @@ class Header extends Component {
                 <li><Link to="/people">Users</Link></li>
                 <li><Logout/></li>
               </ul>
-              <a href="javascript:void(0)" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+              <a
+              // eslint-disable-next-line 
+              href="javascript:void(0)" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">menu</i></a>
             </Col>
           </Row>
         </div>
