@@ -4,7 +4,7 @@ import openSocket from 'socket.io-client'
 class StreamVideo extends Component {
     componentDidMount(){
         // const socket = openSocket('http://145.49.53.161:8001/')
-        const socket = openSocket('http://145.49.55.236:8001/')
+        const socket = openSocket('http://145.49.55.236:'+this.props.stream.Port)
         socket.on('connect',function(){
             socket.emit('f', {
                 function:'getStream', feed:'1'
