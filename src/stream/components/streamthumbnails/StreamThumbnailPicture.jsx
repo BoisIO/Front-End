@@ -1,6 +1,5 @@
-import React, {Component} from 'react'
-
-import './StreamThumbnailPicture.css'
+import "./StreamThumbnailPicture.css"
+import React, {Component} from "react"
 
 class StreamThumbnailPicture extends Component {
     render() {

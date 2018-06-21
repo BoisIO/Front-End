@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import {Row, Col, Container} from 'react-materialize'
-import {connect} from 'react-redux';
-import StreamCardDeck from '../../../stream/components/streamcollections/StreamCardDeck'
-import { getPeople } from '../../../transparentperson/actions/people';
+import { getPeople } from "../../../transparentperson/actions/people"
+import {connect} from "react-redux"
+import {Row, Col, Container} from "react-materialize"
+import React, { Component } from "react"
+import StreamCardDeck from "../../../stream/components/streamcollections/StreamCardDeck"
 
 class TransparentPersonDetailPage extends Component {
     componentDidMount() {
@@ -33,6 +33,6 @@ class TransparentPersonDetailPage extends Component {
 }
 
 function mapStateToProps(store) {
-    return {people: store.people.people, dispatch: store.dispatch};
+    return {people: store.people.people, dispatch: store.dispatch}
 }
-export default connect(mapStateToProps)(TransparentPersonDetailPage);
+export default connect(mapStateToProps)(TransparentPersonDetailPage)

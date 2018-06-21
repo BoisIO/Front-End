@@ -1,23 +1,24 @@
-import React, {Component} from 'react'
-import openSocket from 'socket.io-client'
+import openSocket from "socket.io-client"
+import React, {Component} from "react"
 
 class StreamVideo extends Component {
     componentDidMount(){
-        const socket = openSocket('http://145.49.53.161:'+this.props.stream.Port+'/')
-        //const socket = openSocket('http://145.49.55.236:'+this.props.stream.Port+'/')
-        socket.on('connect',function(){
-            socket.emit('f', {
-                function:'getStream'
+        const socket = openSocket("http://145.49.53.161:"+this.props.stream.Port+"/")
+        //const socket = openSocket("http://145.49.55.236:"+this.props.stream.Port+"/")
+        
+        socket.on("connect",function(){
+            socket.emit("f", {
+                function:"getStream"
             })
         })
 
-        const player = new window.JSMpeg.Player('pipe',{
-            canvas: this.refs['videocanvas_'+this.props.stream._id]
-        });
+        const player = new window.JSMpeg.Player("pipe",{
+            canvas: this.refs["videocanvas_"+this.props.stream._id]
+        })
 
-        socket.on('h264', function (data) {
+        socket.on("h264", function (data) {
             player.write(data.buffer)
-        });
+        })
     }
     render() {
         return (
@@ -26,4 +27,4 @@ class StreamVideo extends Component {
     }
 }
 
-export default StreamVideo;
+export default StreamVideo

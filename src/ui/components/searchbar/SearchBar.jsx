@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Input } from 'react-materialize'
-import {connect} from 'react-redux';
-import {searchStreams} from '../../../stream/actions/streams'
+import React, { Component } from "react"
+import { Input } from "react-materialize"
+import {connect} from "react-redux"
+import {searchStreams} from "../../../stream/actions/streams"
 
 class SearchBar extends Component {
     render() {
@@ -12,7 +12,7 @@ class SearchBar extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps)(SearchBar)
 

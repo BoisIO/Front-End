@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import StreamDraggableContainer from './StreamDraggableContainer'
-import {connect} from 'react-redux';
+import React, {Component} from "react"
+import StreamDraggableContainer from "./StreamDraggableContainer"
+import {connect} from "react-redux"
 
 class StreamPageContainer extends Component {
     render() {
@@ -15,6 +15,6 @@ class StreamPageContainer extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(StreamPageContainer);
+export default connect(mapStateToProps)(StreamPageContainer)

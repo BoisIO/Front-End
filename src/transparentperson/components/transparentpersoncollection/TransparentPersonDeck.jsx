@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import {Row, Col} from 'react-materialize'
-import {connect} from 'react-redux';
-import TransparentPersonThumbnail from '../transparentpersonthumbnails/TransparentPersonThumbnail'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { getPeople } from '../../actions/people';
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import { getPeople } from "../../actions/people"
+import {connect} from "react-redux"
+import {Row, Col} from "react-materialize"
+import React, { Component } from "react"
+import TransparentPersonThumbnail from "../transparentpersonthumbnails/TransparentPersonThumbnail"
 
 class TransparentPersonDeck extends Component {
     componentWillMount() {
@@ -12,7 +12,7 @@ class TransparentPersonDeck extends Component {
     render() {
         return (
             <Row>
-                <div className="progress" style={{visibility: this.props.people.fetching? 'visible': 'hidden'}}>
+                <div className="progress" style={{visibility: this.props.people.fetching? "visible": "hidden"}}>
                     <div className="indeterminate"></div>
                 </div>
                 <TransitionGroup>
@@ -30,6 +30,6 @@ class TransparentPersonDeck extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(TransparentPersonDeck);
+export default connect(mapStateToProps)(TransparentPersonDeck)

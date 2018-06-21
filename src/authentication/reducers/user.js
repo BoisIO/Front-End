@@ -35,7 +35,7 @@ export default function reducer(state = {
         case "ADD_STREAM": {
             if(state.openstreams.map(streamobject => streamobject.stream._id).filter(streamobject => streamobject === action.payload.stream._id).length >= 1) return state
             if(state.openstreams.length < 4) return {...state, openstreams: state.openstreams.concat({...action.payload, chattimestamp: 0})}
-            else return state;
+            else return state
 
             /* Hier moet iets van een melding die aangeeft dat je er maar 4 max mag hebben */
         }
@@ -91,7 +91,7 @@ export default function reducer(state = {
         }
         case "SEND_STREAMCHAT_FULFILLED": {
             return {...state, fetching: false, fetched: true, streams: state.openstreams.map((stream) => {
-                let streamitem = stream.stream;
+                let streamitem = stream.stream
                 if (streamitem._id === action.meta.stream._id) {
                     streamitem.messages.push({
                         User: {
@@ -108,21 +108,21 @@ export default function reducer(state = {
         }
 
         case "FETCH_USERDATA_PENDING":
-            return state;
+            return state
         
         case "FETCH_USERDATA_REJECTED":
-            return state;
+            return state
 
         case "FETCH_USERDATA_FULFILLED":
             return {...state, user: action.payload.data}
 
         case "USER_LOGOUT":
             localStorage.clear()
-            return {...state, authenticated: false, user: {}, openstreams: []};
+            return {...state, authenticated: false, user: {}, openstreams: []}
 
 
         default: {
-            return state;
+            return state
         }
     }
 }

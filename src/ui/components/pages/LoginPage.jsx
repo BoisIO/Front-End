@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import Login from '../../../authentication/components/Login'
-import { Row, Col, Container } from 'react-materialize';
+import { Row, Col, Container } from "react-materialize"
+import Login from "../../../authentication/components/Login"
+import React, { Component } from "react"
 
 class LoginPage extends Component {
     render() {
@@ -8,7 +8,7 @@ class LoginPage extends Component {
             <Container>
                 <Row>
                     <Col l={12}>
-                        <h1>Please authenticate yourself</h1>
+                        <h1>Log in</h1>
                     </Col>
                 </Row>
                 <Login/>
@@ -16,4 +16,4 @@ class LoginPage extends Component {
         )
     }
 }
-export default LoginPage;
+export default LoginPage

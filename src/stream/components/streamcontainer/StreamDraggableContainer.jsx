@@ -1,13 +1,12 @@
-import React, {Component} from 'react'
-import StreamContainer from './StreamContainer'
-import {connect} from 'react-redux';
-import {removeStreamFromUser} from '../../../authentication/actions/user'
-import Rnd from 'react-rnd'
-import './StreamDraggableContainer.css'
-import { getChat, loadMessage } from '../../../chat/actions/chat';
-
-import { subscribeToChat, disconnect as disconnectChat, subscribeToViewerCount } from '../../../socket'
-import { loadViewers, loadViewersOnLeave } from '../../actions/streams';
+import "./StreamDraggableContainer.css"
+import { getChat, loadMessage } from "../../../chat/actions/chat"
+import { loadViewers, loadViewersOnLeave } from "../../actions/streams"
+import { subscribeToChat, disconnect as disconnectChat, subscribeToViewerCount } from "../../../socket"
+import {connect} from "react-redux"
+import {removeStreamFromUser} from "../../../authentication/actions/user"
+import React, {Component} from "react"
+import Rnd from "react-rnd"
+import StreamContainer from "./StreamContainer"
 
 class StreamDraggableContainer extends Component {
 
@@ -49,6 +48,6 @@ class StreamDraggableContainer extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(StreamDraggableContainer);
+export default connect(mapStateToProps)(StreamDraggableContainer)

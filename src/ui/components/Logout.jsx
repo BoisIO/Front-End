@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {logout} from '../../authentication/actions/user'
+import React, { Component } from "react"
+import {connect} from "react-redux"
+import {logout} from "../../authentication/actions/user"
 
 class Logout extends Component {
   render() {
@@ -14,6 +14,6 @@ class Logout extends Component {
 
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(Logout);
+export default connect(mapStateToProps)(Logout)

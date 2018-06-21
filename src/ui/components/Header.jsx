@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
-import {Col, Row} from 'react-materialize'
-import Logout from './Logout'
+import React, { Component } from "react"
+import {Link} from "react-router-dom"
+import {Col, Row} from "react-materialize"
+import Logout from "./Logout"
 
 class Header extends Component {
   render() {

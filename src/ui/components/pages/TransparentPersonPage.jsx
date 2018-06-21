@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import {Container, Row, Col} from 'react-materialize'
-import {connect} from 'react-redux';
-import TransparentPersonDeck from '../../../transparentperson/components/transparentpersoncollection/TransparentPersonDeck';
+import React, { Component } from "react"
+import {Container, Row, Col} from "react-materialize"
+import {connect} from "react-redux"
+import TransparentPersonDeck from "../../../transparentperson/components/transparentpersoncollection/TransparentPersonDeck"
 
 class TransparentPersonPage extends Component {
     render() {
@@ -22,6 +22,6 @@ class TransparentPersonPage extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(TransparentPersonPage);
+export default connect(mapStateToProps)(TransparentPersonPage)
