@@ -23,7 +23,7 @@ class App extends Component {
   }
   
   componentDidMount() {
-    this.interval = setInterval(() => this.props.dispatch(getStreams()), 30000)
+    this.interval = setInterval(() => this.props.dispatch(getStreams()), 10000)
   }
 
   componentWillUnmount() {
