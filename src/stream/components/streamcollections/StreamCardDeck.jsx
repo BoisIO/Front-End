@@ -10,8 +10,8 @@ class StreamCardDeck extends Component {
     render() {
         return (
             <Row>
-                <div class="progress" style={{visibility: this.props.fetching? 'visible': 'hidden'}}>
-                    <div class="indeterminate"></div>
+                <div className="progress" style={{visibility: this.props.fetching? 'visible': 'hidden'}}>
+                    <div className="indeterminate"></div>
                 </div>
                 <TransitionGroup>
                     {this.props.streams
