@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.streamcontainer video, canvas {
+.streamcontainer video, canvas, iframe {
     width: 100%;
     max-height: 500px;
     height: 50%;
