@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
-import {Row, Col} from 'react-materialize'
+import {Container, Row, Col} from 'react-materialize'
 import {connect} from 'react-redux';
 import TransparentPersonDeck from '../../../transparentperson/components/transparentpersoncollection/TransparentPersonDeck';
 
 class TransparentPersonPage extends Component {
     render() {
         return (
-            <div>
+            <Container>
                 <Row>
                     <Col l={12}>
-                        <h2>Our users</h2>
-                        <p>✔ Means that someone is a transparent user</p>
+                        <h2>Users</h2>
+                        <p>Any person with a "✔" is a transparent person.</p>
                     </Col>
                 </Row>
-            <Row>
-                <TransparentPersonDeck/>
-            </Row>
-            </div>
+                <Row>
+                    <TransparentPersonDeck/>
+                </Row>
+            </Container>
         )
     }
 }

@@ -10,7 +10,7 @@ class TransparentPersonThumbnail extends Component {
                         <img className="responsive-image picfit" src={this.props.person.Avatar || "/assets/img/404.png"} alt=""/>
                     </div>
                     <div className="card-content">
-                        <p style={{fontWeight: "bold"}}>{this.props.person.Name} {(this.props.person.Transparant ? " ✔" : "")}</p>
+                        <p className="text-title truncate" style={{fontSize: "1.15em", color: "#000"}}>{this.props.person.Name} {(this.props.person.Transparant ? " ✔" : "")}</p>
                     </div>
                 </div>
             </Link>

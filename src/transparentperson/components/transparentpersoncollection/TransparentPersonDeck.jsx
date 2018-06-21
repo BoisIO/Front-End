@@ -12,13 +12,13 @@ class TransparentPersonDeck extends Component {
     render() {
         return (
             <Row>
-                {this.props.people.fetching?<div className="center">
-                    "Fetching userdata... please wait a few seconds"
-                </div>:null}
+                <div className="progress" style={{visibility: this.props.people.fetching? 'visible': 'hidden'}}>
+                    <div className="indeterminate"></div>
+                </div>
                 <TransitionGroup>
                         {this.props.people.people.map(item =>
                             <CSSTransition key={item._id} timeout={500} classNames="fade">
-                                <Col s={12} m={4} l={2} key={item._id}> 
+                                <Col s={12} m={4} l={3} key={item._id}> 
                                     <TransparentPersonThumbnail person={item}/>
                                 </Col>
                             </CSSTransition>
