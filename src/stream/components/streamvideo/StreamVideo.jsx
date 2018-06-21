@@ -1,5 +1,6 @@
 import openSocket from "socket.io-client"
 import React, {Component} from "react"
+import JSMpeg from './jsmpeg'
 
 class StreamVideo extends Component {
     socket = null
@@ -14,12 +15,12 @@ class StreamVideo extends Component {
                 function:"getStream"
             })
         })
-
-        this.player = new window.JSMpeg.Player(this.props.stream._id,{
+        this.player = new JSMpeg.Player(this.props.stream._id,{
             canvas: this.refs["videocanvas_"+this.props.stream._id]
         })
 
         this.socket.on("h264", function (data) {
+            console.log("This is stream %s en we're receiving data from %s",self.props.stream.User._id, data.stream)
             if(data.stream === self.props.stream.User._id) {
                 self.player.write(data.buffer)
             }
