@@ -3,6 +3,7 @@ import React, {Component} from "react"
 
 class StreamVideo extends Component {
     socket = null
+    player = null
     componentDidMount(){
         console.log("http://145.49.53.161:"+this.props.stream.Port+"/")
         this.socket = openSocket("http://145.49.53.161:"+this.props.stream.Port+"/")
@@ -14,12 +15,12 @@ class StreamVideo extends Component {
             })
         })
 
-        const player = new window.JSMpeg.Player("pipe",{
+        this.player = new window.JSMpeg.Player(this.props.stream._id,{
             canvas: this.refs["videocanvas_"+this.props.stream._id]
         })
 
         this.socket.on("h264", function (data) {
-            player.write(data.buffer)
+            self.player.write(data.buffer)
         })
     }
     componentWillUnmount() {
@@ -30,8 +31,10 @@ class StreamVideo extends Component {
         catch (e) {
 
         }
+        this.player.isPlaying = false
     }
     render() {
+        console.log('Done this: '+this.socket)
         return (
             <canvas style={{backgroundColor:"black"}} ref={"videocanvas_"+this.props.stream._id}></canvas>
         )
