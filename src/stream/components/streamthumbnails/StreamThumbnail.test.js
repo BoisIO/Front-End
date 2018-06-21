@@ -1,9 +1,7 @@
-import React from 'react'
-import renderer from 'react-test-renderer';
-import StreamThumbnail from './StreamThumbnail';
-import Provider from 'react-redux'
-import configureStore from 'redux-mock-store'
-import store from '../../../store'
+import configureStore from "redux-mock-store"
+import React from "react"
+import renderer from "react-test-renderer"
+import StreamThumbnail from "./StreamThumbnail"
 
 const initialState = {}
 const mockStream = {
@@ -17,19 +15,19 @@ const mockStream = {
     },
     Viewers: 0
 }
-describe('StreamThumbnail gets rendered properly with props', () => {
-    let store = configureStore();
+describe("StreamThumbnail gets rendered properly with props", () => {
+    let store = configureStore()
 
     beforeEach(() => {
         store = store(initialState)
     })
-    it('renders a thumbnail with data properly', () => {
+    it("renders a thumbnail with data properly", () => {
         const component = renderer.create(<StreamThumbnail store={store} stream={mockStream}/>)
         const tree = component.toJSON()
-        expect(tree.type, 'div')
+        expect(tree.type, "div")
         const content = tree.children[1].children
-        expect(content[0].children[0], 'Maarten van der Heijden')
-        expect(content[1].children[0], 'Maarten is cool!')
-        expect(content[2].children[0], '0 followers')
+        expect(content[0].children[0], "Maarten van der Heijden")
+        expect(content[1].children[0], "Maarten is cool!")
+        expect(content[2].children[0], "0 followers")
     })
 })

@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import StreamCardDeck from '../../../stream/components/streamcollections/StreamCardDeck'
-import {Row, Col} from 'react-materialize'
-import StreamNavigation from '../navigation/StreamNavigation';
-import SearchBar from '../../../ui/components/searchbar/SearchBar'
+import {Row, Col} from "react-materialize"
+import React, { Component } from "react"
+import SearchBar from "../../../ui/components/searchbar/SearchBar"
+import StreamCardDeck from "../../../stream/components/streamcollections/StreamCardDeck"
+import StreamNavigation from "../navigation/StreamNavigation"
 
 class StreamPage extends Component {
     render() {
@@ -21,4 +21,4 @@ class StreamPage extends Component {
         )
     }
 }
-export default StreamPage;
+export default StreamPage

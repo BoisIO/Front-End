@@ -1,9 +1,9 @@
-import axios from '../../axios'
-import React, { Component } from 'react'
-import crypto from 'crypto'
-import {Row, Col, Input} from 'react-materialize'
-import { connect } from 'react-redux'
-import {authenticate, testToken} from '../actions/user'
+import axios from "../../axios"
+import React, { Component } from "react"
+import crypto from "crypto"
+import {Row, Col, Input} from "react-materialize"
+import { connect } from "react-redux"
+import {authenticate, testToken} from "../actions/user"
 
 class Login extends Component {
   constructor() {
@@ -21,17 +21,17 @@ class Login extends Component {
   }
   handleFile(token, name, contents) {
     if (token && name && contents) {
-      let sign = crypto.createSign('RSA-SHA256')
+      let sign = crypto.createSign("RSA-SHA256")
       sign.write(JSON.stringify({token: token}))
       sign.end()
 
       try {
-        let signature = sign.sign(contents, 'hex')
+        let signature = sign.sign(contents, "hex")
 
         let headers = {
-          'Signature': signature,
-          'Token': token,
-          'Name': name
+          "Signature": signature,
+          "Token": token,
+          "Name": name
         }
 
         this.props.dispatch(authenticate(headers, {name: name, token: token, contents: contents}))
@@ -42,7 +42,6 @@ class Login extends Component {
     } else { 
       window.localStorage.clear()
       alert("Not all data was entered.")
-      console.log(token, name, contents)
     }
   }
 
@@ -52,9 +51,9 @@ class Login extends Component {
     if(window.localStorage.getItem("_username") !== event.target.user.value) window.localStorage.setItem("_username", event.target.user.value)
 
     const _self = this
-    axios.get('/login', {headers: null, forceUpdate: true})
+    axios.get("/login", {headers: null, forceUpdate: true})
       .then(function (response) {
-        let token = response.headers.token || response.headers['token']
+        let token = response.headers.token || response.headers["token"]
         let name = event.target.user.value || window.localStorage.getItem("_username")
 
         let contents = window.localStorage.getItem("_certificate")
@@ -68,16 +67,13 @@ class Login extends Component {
           }
           reader.readAsText(file)
         } else if (contents !== null) {
-          console.log("We were already logged in. Trying to verify the saved certficate.")
           _self.handleFile(token, name, contents)
         } else {
           alert("Not all data was entered.")
-          console.log(contents, file)
           localStorage.clear()
         }
       })
       .catch(function (error) {
-        console.log(error)
         alert("An error has occured during token retrieval.\n" + error.message)
         localStorage.clear()
       })
@@ -115,6 +111,6 @@ class Login extends Component {
 }
 
 function mapStateToProps(store) {
-  return store;
+  return store
 }
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login)

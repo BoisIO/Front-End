@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
-
-import './StreamNavigation.css'
+import "./StreamNavigation.css"
+import { Link } from "react-router-dom"
+import React, {Component} from "react"
 
 class StreamNavigation extends Component {
     render() {

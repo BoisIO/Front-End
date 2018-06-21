@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
-import StreamThumbnailPicture from './StreamThumbnailPicture'
-import {connect} from 'react-redux'
-import {addStreamToUser} from '../../../authentication/actions/user'
-
-import './StreamThumbnail.css'
+import "./StreamThumbnail.css"
+import {addStreamToUser} from "../../../authentication/actions/user"
+import {connect} from "react-redux"
+import React, {Component} from "react"
+import StreamThumbnailPicture from "./StreamThumbnailPicture"
 
 class StreamThumbnail extends Component {
     render() {
@@ -14,7 +13,7 @@ class StreamThumbnail extends Component {
                 </div>
                 <div className="card-content">
                     <p className="text-title truncate">{this.props.stream.User.Name}</p>
-                    <p className="text-slogan truncate">{this.props.stream.User.Slogan ? this.props.stream.User.Slogan : 'No slogan.'}</p>
+                    <p className="text-slogan truncate">{this.props.stream.User.Slogan ? this.props.stream.User.Slogan : "No slogan."}</p>
                     <p className="text-muted truncate">{this.props.stream.Viewers} followers</p>
                 </div>
             </div>
@@ -23,6 +22,6 @@ class StreamThumbnail extends Component {
 }
 
 function mapStateToProps(store) {
-    return {dispatch: store.dispatch};
+    return {dispatch: store.dispatch}
 }
-export default connect(mapStateToProps)(StreamThumbnail);
+export default connect(mapStateToProps)(StreamThumbnail)

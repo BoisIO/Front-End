@@ -1,16 +1,16 @@
-import React, {Component} from 'react'
-import StreamThumbnail from '../streamthumbnails/StreamThumbnail';
-import {Row, Col} from 'react-materialize'
-import {connect} from 'react-redux'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import './StreamCardDeck.css'
+import React, {Component} from "react"
+import StreamThumbnail from "../streamthumbnails/StreamThumbnail"
+import {Row, Col} from "react-materialize"
+import {connect} from "react-redux"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import "./StreamCardDeck.css"
 
 
 class StreamCardDeck extends Component {
     render() {
         return (
             <Row>
-                <div className="progress" style={{visibility: this.props.fetching? 'visible': 'hidden'}}>
+                <div className="progress" style={{visibility: this.props.fetching ? "visible": "hidden"}}>
                     <div className="indeterminate"></div>
                 </div>
                 <TransitionGroup>
@@ -30,12 +30,12 @@ class StreamCardDeck extends Component {
                                     return 0.5 - Math.random()
                             }
                         })
-                        .map(item =>
-                        <CSSTransition key={item._id} timeout={500} classNames="fade">
-                            <Col s={12} m={6} l={3}> 
-                                <StreamThumbnail stream={item}/>
-                            </Col>
-                        </CSSTransition>
+                        .map((item) =>
+                            <CSSTransition key={item._id} timeout={500} classNames="fade">
+                                <Col s={12} m={6} l={3}> 
+                                    <StreamThumbnail stream={item}/>
+                                </Col>
+                            </CSSTransition>
                     )}
                 </TransitionGroup>
             </Row>
@@ -44,6 +44,6 @@ class StreamCardDeck extends Component {
 }
 
 function mapStateToProps(store) {
-    return {streams: store.streams.streams, searchword: store.streams.searchword, fetching: store.streams.fetching};
+    return {streams: store.streams.streams, searchword: store.streams.searchword, fetching: store.streams.fetching}
 }
-export default connect(mapStateToProps)(StreamCardDeck);
+export default connect(mapStateToProps)(StreamCardDeck)

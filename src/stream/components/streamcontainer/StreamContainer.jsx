@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import ChatBoxContainer from '../../../chat/components/chatboxcontainer/ChatBoxContainer'
-import StreamVideo from '../streamvideo/StreamVideo'
-import './StreamContainer.css'
-import ChatInput from '../../../chat/components/chatinput/ChatInput'
-import {connect} from 'react-redux'
+import "./StreamContainer.css"
+import {connect} from "react-redux"
+import ChatBoxContainer from "../../../chat/components/chatboxcontainer/ChatBoxContainer"
+import ChatInput from "../../../chat/components/chatinput/ChatInput"
+import React, {Component} from "react"
+import StreamVideo from "../streamvideo/StreamVideo"
 
 class StreamContainer extends Component {
     render() {
@@ -19,6 +19,6 @@ class StreamContainer extends Component {
 }
 
 function mapStateToProps(store) {
-    return store;
+    return store
 }
-export default connect(mapStateToProps)(StreamContainer);
+export default connect(mapStateToProps)(StreamContainer)

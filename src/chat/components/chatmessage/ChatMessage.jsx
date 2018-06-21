@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
-import moment from 'moment'
-import './ChatMessage.css'
+import "./ChatMessage.css"
+import moment from "moment"
+import React, {Component} from "react"
 
 class ChatMessage extends Component {
     absoluteDateTime(time) {
@@ -11,8 +11,8 @@ class ChatMessage extends Component {
     }
     render() {
         return (
-            <li className="collection-item" style={{overflow: 'hidden'}}>
-                <div style={{zIndex: 10, position: 'relative', background: '#fff'}}>
+            <li className="collection-item" style={{overflow: "hidden"}}>
+                <div style={{zIndex: 10, position: "relative", background: "#fff"}}>
                     <div className="left">
                         <div className="chip">
                             <img src={this.props.message.User.Avatar || "/assets/img/404.png"} alt=""/>
@@ -29,4 +29,4 @@ class ChatMessage extends Component {
     }
 }
 
-export default ChatMessage;
+export default ChatMessage
