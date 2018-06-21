@@ -10,9 +10,9 @@ class StreamCardDeck extends Component {
     render() {
         return (
             <Row>
-                {this.props.fetching?<div className="center">
-                    Fetching streamdata... please wait a few seconds
-                </div>:null}
+                <div className="progress" style={{visibility: this.props.fetching? 'visible': 'hidden'}}>
+                    <div className="indeterminate"></div>
+                </div>
                 <TransitionGroup>
                     {this.props.streams
                         .filter(stream => stream.Live)
